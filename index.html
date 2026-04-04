@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+
+<!-- Mobile (iOS/Android) compatibility -->
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="color-scheme" content="dark light"/>
+<title id="pageTitle">Aqua.Tech</title>
+<meta content="Aqua.Tech شركة برمجيات تقدّم تطوير تطبيقات ومواقع وحلول مخصصة مع تصميم وموشن جرافيك وإدارة سوشال ميديا." id="metaDesc" name="description"/>
+<link rel="canonical" href="https://aqua.tech/"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Aqua.Tech"/>
+<meta property="og:title" content="Aqua.Tech"/>
+<meta property="og:description" content="Aqua.Tech شركة برمجيات تقدّم تطوير تطبيقات ومواقع وحلول مخصصة مع تصميم وموشن جرافيك وإدارة سوشال ميديا."/>
+<meta property="og:image" content="logoo.jpeg"/>
+<meta property="og:locale" content="ar_JO"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Aqua.Tech"/>
+<meta name="twitter:description" content="Aqua.Tech شركة برمجيات تقدّم تطوير تطبيقات ومواقع وحلول مخصصة مع تصميم وموشن جرافيك وإدارة سوشال ميديا."/>
+<meta name="twitter:image" content="logoo.jpeg"/>
+<meta content="#050B14" name="theme-color"/>
+<!-- ✅ Favicon: نفس الشعار الوحيد -->
+<link rel="icon" type="image/jpeg" href="logoo.jpeg">
+<link rel="apple-touch-icon" href="logoo.jpeg">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            glow: "0 0 0 1px rgba(34,211,238,.25), 0 12px 50px rgba(0,0,0,.55)",
+            aqua: "0 18px 60px rgba(96,165,250,.14)"
+          }
+        }
+      }
+    };
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    :root{
+      --bg:#050B14;
+      --surface:#0B1626;
+      --border:#1B2A3A;
+      --text:#E6F0FF;
+      --muted:#A8B3C7;
+      --muted2:#C8D4EA;
+
+      /* Aqua (يميل للأزرق) */
+      --p1:#22D3EE;
+      --p2:#60A5FA;
+      --p3:#38BDF8;
+      --cta1:#163B5A;
+      --cta2:#1E5B85;
+      --ctaText:#EAF6FF;
+      --ctaNote:#B8D5EA;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: "IBM Plex Sans Arabic", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+    /* subtle grain */
+    .grain:before{
+      content:"";
+      position:absolute; inset:0;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" stitchTiles="stitch"/></filter><rect width="220" height="220" filter="url(%23n)" opacity=".22"/></svg>');
+      opacity:.16; pointer-events:none; mix-blend-mode: overlay;
+    }
+
+    /* dot-grid */
+    .dotgrid{
+      background-image: radial-gradient(rgba(96,165,250,.12) 1px, transparent 1px);
+      background-size: 22px 22px;
+      background-position: 0 0;
+    }
+
+    /* floating */
+    @keyframes floatA { 0%,100% { transform: translateY(0) rotate(0deg);} 50% { transform: translateY(-12px) rotate(3deg);} }
+    @keyframes floatB { 0%,100% { transform: translateY(0) rotate(0deg);} 50% { transform: translateY(-18px) rotate(-4deg);} }
+    @keyframes floatC { 0%,100% { transform: translateY(0) rotate(0deg);} 50% { transform: translateY(-10px) rotate(5deg);} }
+    .floatA{ animation: floatA 12s ease-in-out infinite; opacity: .55; }
+    .floatB{ animation: floatB 14s ease-in-out infinite; opacity: .45; }
+    .floatC{ animation: floatC 13s ease-in-out infinite; opacity: .5; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: rgba(255,255,255,.03); }
+    ::-webkit-scrollbar-thumb { background: rgba(34,211,238,.18); border-radius: 99px; border: 2px solid rgba(5,11,20,1); }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(96,165,250,.22); }
+
+    /* line clamp */
+    .line-clamp-3{
+      display:-webkit-box;
+      -webkit-line-clamp:3;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .floatA,.floatB,.floatC{ animation:none; }
+      html{ scroll-behavior:auto; }
+    }
+  
+    /* form fields (force dark theme, avoid browser white inputs) */
+    .form-field{
+      background: rgba(11,22,38,.78);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .form-field::placeholder{ color: rgba(168,179,199,.75); }
+    .form-field:focus{
+      outline: none;
+      border-color: var(--p1);
+      box-shadow: 0 0 0 4px rgba(34,211,238,.16);
+    }
+    select.form-field{
+      background: rgba(11,22,38,.78);
+    }
+
+    .quote-submit{
+      background: linear-gradient(135deg, var(--cta1), var(--cta2));
+      color: var(--ctaText);
+      border: 1px solid rgba(120,186,230,.28);
+      box-shadow: 0 16px 44px rgba(7, 24, 41, .34), inset 0 1px 0 rgba(255,255,255,.08);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease, opacity .2s ease;
+    }
+    .quote-submit:hover{
+      transform: translateY(-1px);
+      filter: saturate(1.04);
+      box-shadow: 0 20px 52px rgba(7, 24, 41, .40), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .quote-submit:active{
+      transform: translateY(0);
+      box-shadow: 0 12px 28px rgba(7, 24, 41, .28), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .quote-submit:focus-visible{
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(34,211,238,.14), 0 18px 48px rgba(7, 24, 41, .36), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .quote-submit .quote-title{
+      display:block;
+      color: var(--ctaText);
+      font-weight: 700;
+      letter-spacing: -.01em;
+      text-shadow: none;
+    }
+    .quote-submit .quote-note{
+      color: var(--ctaNote);
+      line-height: 1.75;
+      font-weight: 500;
+      opacity: .96;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.9rem;
+      margin-top:1.25rem;
+      justify-content:center;
+      align-items:stretch;
+      width:100%;
+    }
+    .hero-stats{
+      margin-top:1.75rem;
+    }
+    .hero-stat-card{
+      width:100%;
+      max-width:22rem;
+      min-height:5.75rem;
+      border-radius:1.35rem;
+      padding:1rem 1.1rem;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+      border:1px solid rgba(96,165,250,.14);
+      box-shadow:0 16px 40px rgba(0,0,0,.16);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+    }
+    .hero-primary-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:3rem;
+      padding:.85rem 1.35rem;
+      border-radius:1rem;
+      background: linear-gradient(135deg, rgba(21,58,89,.96), rgba(31,91,133,.96));
+      color:#ECF7FF;
+      border:1px solid rgba(125,187,228,.22);
+      box-shadow: 0 14px 34px rgba(5,11,20,.32);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .hero-primary-btn:hover{
+      transform: translateY(-1px);
+      filter: saturate(1.05);
+      box-shadow: 0 18px 40px rgba(5,11,20,.38);
+    }
+    .hero-secondary-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:3rem;
+      padding:.85rem 1.35rem;
+      border-radius:1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .hero-secondary-btn:hover{
+      background: rgba(255,255,255,.07);
+      border-color: rgba(96,165,250,.25);
+      transform: translateY(-1px);
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:1rem;
+      margin-top:2rem;
+    }
+    .why-card{
+      height:100%;
+      min-height: 170px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(96,165,250,.12);
+      box-shadow: 0 16px 44px rgba(0,0,0,.18);
+    }
+    .about-shell{
+      border-radius: 1.75rem;
+      padding: 1.75rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(96,165,250,.12);
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+    }
+
+
+    /* Make "Request this service" link always clickable */
+    .js-service-cta{ position: relative; z-index: 5; }
+
+    /* FAQ accordion */
+.faq-q{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  text-align:start;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+
+}
+.faq-icon{
+  flex:0 0 auto;
+  width: 28px; height: 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(27,42,58,.7);
+  background: rgba(255,255,255,.04);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-family: Inter, system-ui;
+  font-size: 16px;
+  color: rgba(230,240,255,.85);
+  transition: transform .2s ease, background .2s ease;
+}
+.faq-a{ display:none; }
+.faq-item.is-open .faq-a{ display:block; }
+.faq-item.is-open .faq-icon{ transform: rotate(45deg); background: rgba(255,255,255,.06); }
+
+    /* ===== Global animated background (matches hero vibe) ===== */
+    body{ position: relative; }
+
+    @keyframes blobDriftA {
+      0%,100% { transform: translate3d(-50%,0,0) scale(1); }
+      50%     { transform: translate3d(-50%,14px,0) scale(1.04); }
+    }
+    @keyframes blobDriftB {
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      50%     { transform: translate3d(18px,-10px,0) scale(1.06); }
+    }
+    @keyframes blobDriftC {
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      50%     { transform: translate3d(-16px,12px,0) scale(1.05); }
+    }
+
+    .bg-blob{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(34,211,238,.55), transparent 55%),
+        radial-gradient(circle at 70% 30%, rgba(96,165,250,.45), transparent 55%),
+        radial-gradient(circle at 45% 80%, rgba(56,189,248,.40), transparent 55%);
+    }
+    .bg-blob2{
+      background:
+        radial-gradient(circle at 30% 30%, rgba(56,189,248,.45), transparent 58%),
+        radial-gradient(circle at 70% 70%, rgba(34,211,238,.35), transparent 60%);
+    }
+    .bg-blob3{
+      background:
+        radial-gradient(circle at 35% 35%, rgba(96,165,250,.40), transparent 58%),
+        radial-gradient(circle at 70% 55%, rgba(34,211,238,.32), transparent 60%);
+    }
+
+    .bubbles{ position:absolute; inset:0; overflow:hidden; }
+    .bubbles span{
+      position:absolute;
+      bottom:-15vh;
+      border-radius:9999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), rgba(34,211,238,.18) 40%, rgba(96,165,250,.10) 70%, transparent 72%);
+      border: 1px solid rgba(255,255,255,.08);
+      filter: blur(.15px);
+      opacity: .0;
+      animation-name: bubbleRise;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
+    }
+    @keyframes bubbleRise{
+      0%   { transform: translate3d(0,0,0) scale(.85); opacity: 0; }
+      10%  { opacity: .22; }
+      85%  { opacity: .14; }
+      100% { transform: translate3d(0,-125vh,0) scale(1.25); opacity: 0; }
+    }
+
+    
+    /* ===== Software / computer motif layer (subtle) ===== */
+    @keyframes circuitPan {
+      0%   { transform: translate3d(0,0,0); }
+      100% { transform: translate3d(-140px,-140px,0); }
+    }
+    .tech-circuit{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(to right, rgba(34,211,238,.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(96,165,250,.08) 1px, transparent 1px),
+        radial-gradient(circle at 18% 28%, rgba(34,211,238,.16) 0 2px, transparent 3px),
+        radial-gradient(circle at 62% 44%, rgba(96,165,250,.14) 0 2px, transparent 3px),
+        radial-gradient(circle at 74% 76%, rgba(34,211,238,.12) 0 2px, transparent 3px),
+        radial-gradient(circle at 34% 70%, rgba(96,165,250,.10) 0 2px, transparent 3px);
+      background-size: 140px 140px, 140px 140px, 520px 520px, 560px 560px, 640px 640px, 700px 700px;
+      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+      /* soft focus toward center/top like hero */
+      -webkit-mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,.95), transparent 70%);
+      mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,.95), transparent 70%);
+      opacity: .16;
+      animation: circuitPan 38s linear infinite;
+      will-change: transform;
+    }
+
+    .tech-code{ position:absolute; inset:0; overflow:hidden; }
+    .tech-code span{
+      position:absolute;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      letter-spacing: .14em;
+      color: rgba(226,232,240,.55);
+      text-shadow: 0 0 14px rgba(34,211,238,.18);
+      opacity: 0;
+      animation-name: codeDrift;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
+      user-select: none;
+      white-space: nowrap;
+    }
+    @keyframes codeDrift{
+      0%   { transform: translate3d(0,16px,0); opacity: 0; }
+      12%  { opacity: .16; }
+      50%  { transform: translate3d(0,-18px,0); opacity: .10; }
+      88%  { opacity: .14; }
+      100% { transform: translate3d(0,16px,0); opacity: 0; }
+    }
+
+@media (prefers-reduced-motion: reduce){
+      .bg-blobA,.bg-blobB,.bg-blobC,.bubbles span,.tech-circuit,.tech-code span{ animation:none !important; }
+    }
+
+
+    
+/* Mobile polish (iOS/Android) */
+html { -webkit-text-size-adjust: 100%; }
+:where(a, button, summary, [role="button"]) { touch-action: manipulation; }
+:where(a, button, summary) { -webkit-tap-highlight-color: transparent; }
+/* Safe-area for iPhone notch / home indicator */
+body { padding-bottom: env(safe-area-inset-bottom); }
+header.sticky { padding-top: env(safe-area-inset-top); }
+
+/* anchor offset for sticky header (mobile + desktop) */
+    section[id], main[id] { scroll-margin-top: calc(90px + env(safe-area-inset-top)); }
+
+
+    /* Pause heavy animations when tab is not visible (performance) */
+    body.is-paused .bg-blobA,
+    body.is-paused .bg-blobB,
+    body.is-paused .bg-blobC,
+    body.is-paused .bubbles span,
+    body.is-paused .tech-circuit,
+    body.is-paused .tech-code span { animation-play-state: paused !important; }
+[data-i18n="hero.desc"]{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.brand-lock{
+  direction: ltr;
+  unicode-bidi: isolate;
+  flex-shrink: 0;
+}
+
+.brand-lock img{
+  flex-shrink: 0;
+}
+
+.brand-lock > span:last-child{
+  text-align: left;
+}
+.header-row{
+  direction: ltr;
+}
+.desktop-nav{
+  direction: ltr;
+}
+
+html[dir="rtl"] .desktop-nav{
+  direction: rtl;
+}
+
+html[dir="rtl"] .desktop-nav a{
+  text-align: right;
+}
+
+
+.nav-link{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  min-height:2.6rem;
+  padding:.55rem .8rem;
+  border-radius:9999px;
+  color:var(--muted2);
+  transition: color .2s ease, background .2s ease, transform .2s ease, border-color .2s ease;
+}
+.nav-link:hover{
+  color:#fff;
+  background:rgba(255,255,255,.05);
+  transform:translateY(-1px);
+}
+.nav-link.is-active{
+  color:#fff;
+  background:linear-gradient(135deg, rgba(21,58,89,.88), rgba(31,91,133,.82));
+  border-color:rgba(125,187,228,.22);
+  box-shadow:0 10px 24px rgba(4,12,24,.22);
+}
+
+.mobile-nav-link{
+  display:flex;
+  align-items:center;
+  min-height:48px;
+  padding:.8rem 1rem;
+  border-radius:1rem;
+  color:var(--muted2);
+  border:1px solid transparent;
+  transition:background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.mobile-nav-link:hover{
+  color:#fff;
+  background:rgba(255,255,255,.05);
+  border-color:rgba(96,165,250,.16);
+}
+.mobile-nav-link.is-active{
+  color:#fff;
+  background:linear-gradient(135deg, rgba(21,58,89,.72), rgba(31,91,133,.62));
+  border-color:rgba(125,187,228,.20);
+}
+
+
+/* Keep hero layout visually identical in Arabic and English */
+.hero-layout{ direction:ltr; }
+.hero-stats{ direction:ltr; }
+.hero-panel{ direction:ltr; }
+.hero-terminal{ direction:ltr; }
+
+html[dir="rtl"] .hero-copy{
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="ltr"] .hero-copy{
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="rtl"] .hero-stats > div,
+html[dir="rtl"] .hero-panel-copy,
+html[dir="rtl"] .hero-mini-card,
+html[dir="rtl"] .hero-ready{
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="ltr"] .hero-stats > div,
+html[dir="ltr"] .hero-panel-copy,
+html[dir="ltr"] .hero-mini-card,
+html[dir="ltr"] .hero-ready{
+  direction: ltr;
+  text-align: left;
+}
+html[dir="rtl"] .hero-copy p{
+  margin-right: 0;
+  margin-left: auto;
+}
+html[dir="rtl"] .hero-panel-wrap{
+  display: flex;
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .hero-panel{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* In Arabic on desktop: swap hero columns so the card moves to the left side */
+@media (min-width: 768px){
+  html[dir="rtl"] .hero-layout > .hero-copy{
+    order: 2;
+  }
+
+  html[dir="rtl"] .hero-layout > .hero-panel-wrap{
+    order: 1;
+    justify-content: flex-start;
+  }
+
+  html[dir="rtl"] .hero-layout > .hero-panel-wrap .hero-panel{
+    margin-inline-start: 0 !important;
+    margin-inline-end: auto !important;
+  }
+}
+.hero-card-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+html[dir="rtl"] .hero-card-head{
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero-card-head .hero-panel-copy{
+  text-align: right;
+}
+
+html[dir="ltr"] .hero-card-head .hero-panel-copy{
+  text-align: left;
+}
+
+
+/* Performance + mobile optimization */
+img{ max-width:100%; height:auto; }
+section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
+#contact, footer{ content-visibility:visible; }
+
+@media (max-width: 1023px){
+  .tech-circuit{
+    opacity:.08 !important;
+    animation-duration:70s !important;
+    transform:scale(.96);
+  }
+  .tech-code{
+    opacity:.45 !important;
+  }
+  .tech-code span{
+    animation-duration:18s !important;
+    font-size:.72rem !important;
+    text-shadow:0 0 10px rgba(34,211,238,.10);
+  }
+  .bubbles{
+    opacity:.22 !important;
+  }
+  .bubbles span{
+    animation-duration:24s !important;
+    opacity:.12;
+  }
+  .bg-blobA,.bg-blobB,.bg-blobC{ opacity:.14 !important; filter: blur(42px); }
+}
+
+@media (max-width: 767px){
+  html, body{ overflow-x:hidden; }
+  body{ padding-bottom:max(env(safe-area-inset-bottom), 0px); }
+  #globalBg{
+    opacity:.76;
+  }
+  .grain:before{ opacity:.08 !important; }
+  .floatA,.floatB,.floatC{
+    animation-duration:17s !important;
+    opacity:.28 !important;
+  }
+  .tech-circuit{
+    opacity:.065 !important;
+    animation-duration:84s !important;
+    -webkit-mask-image: radial-gradient(circle at 50% 22%, rgba(0,0,0,.8), transparent 72%);
+    mask-image: radial-gradient(circle at 50% 22%, rgba(0,0,0,.8), transparent 72%);
+  }
+  .tech-code{ opacity:.42 !important; }
+  .tech-code span{
+    animation-duration:20s !important;
+    font-size:.68rem !important;
+    letter-spacing:.11em !important;
+  }
+  .bubbles{ opacity:.20 !important; }
+  .bubbles span{
+    animation-duration:25s !important;
+    transform:scale(.86);
+  }
+  .bg-blobA,.bg-blobB,.bg-blobC{
+    opacity:.13 !important;
+    filter: blur(38px) !important;
+  }
+  header.sticky,
+  #mobileMenu{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(5,11,20,.96) !important;
+  }
+  .header-row{ gap:.75rem; align-items:center; }
+  .brand-lock{ min-width:0; max-width:calc(100% - 8.5rem); }
+  #mobileMenu a{ min-height:44px; display:flex; align-items:center; }
+  .hero-layout{ gap:1rem !important; }
+  .hero-copy > p:first-child{ font-size:.75rem; line-height:1.5rem; }
+  .hero-copy h1{ margin-top:1rem; line-height:1.18; }
+  .hero-copy [data-i18n="hero.desc"]{
+    margin-top:1rem;
+    max-width:none;
+    font-size:.95rem;
+    line-height:1.9;
+  }
+  .hero-stats{ margin-top:1.1rem; grid-template-columns:1fr !important; gap:.75rem; justify-items:stretch; }
+  .hero-stats > div,
+  .hero-panel-wrap,
+  .hero-panel{ width:100% !important; max-width:none !important; }
+  .hero-panel{ padding:1rem !important; border-radius:1.5rem; }
+  .hero-card-head{ gap:.75rem; }
+  .hero-mini-card{ padding:.875rem !important; }
+  .hero-terminal{ margin-top:1rem; }
+  .hero-terminal pre{ font-size:11px; line-height:1.65; white-space:pre-wrap; word-break:break-word; }
+  .hero-ready{ margin-top:1rem; padding:1rem; }
+  section[id], main[id]{ scroll-margin-top:80px; }
+  section > div[class*="max-w-6xl"]{ padding-top:2.75rem !important; padding-bottom:2.75rem !important; }
+  #services .space-y-10 > div,
+  #process .grid > div,
+  #projects .grid > div,
+  #team .grid > div,
+  #partners .grid > div,
+  #faq .space-y-4 > div,
+  #contact .grid > div > div,
+  #contact form{ border-radius:1.5rem; }
+  #services svg,
+  #process svg,
+  #projects svg,
+  #team svg,
+  #partners svg{ max-width:100%; height:auto; }
+  footer .max-w-6xl{ padding-top:1.5rem; padding-bottom:1.5rem; }
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .hero-actions a{ width:100%; }
+  .why-grid{ grid-template-columns:1fr; }
+  .why-card{ min-height:auto; }
+  .about-shell{ padding:1.25rem; }
+}
+
+@media (max-width: 1023px){
+  .why-grid{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+</style>
+</head>
+<body class="bg-[var(--bg)] text-[var(--text)] overflow-x-hidden selection:bg-white/20 selection:text-white">
+
+<!-- ===== Global Background Animation ===== -->
+<div id="globalBg" aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+  <div class="absolute inset-0 dotgrid opacity-[.22]"></div>
+  <div class="tech-circuit"></div>
+
+  <div class="tech-code opacity-[.9]">
+    <span style="left:8%;  top:16%; font-size:18px; animation-duration:26s; animation-delay:-4s;">&lt;/&gt;</span>
+    <span style="left:74%; top:18%; font-size:14px; animation-duration:32s; animation-delay:-11s;">{ }</span>
+    <span style="left:18%; top:60%; font-size:12px; animation-duration:28s; animation-delay:-8s;">0101 0010</span>
+    <span style="left:56%; top:68%; font-size:12px; animation-duration:34s; animation-delay:-17s;">const</span>
+    <span style="left:36%; top:30%; font-size:13px; animation-duration:30s; animation-delay:-5s;">API</span>
+    <span style="left:62%; top:44%; font-size:12px; animation-duration:36s; animation-delay:-20s;">function()</span>
+    <span style="left:82%; top:76%; font-size:13px; animation-duration:29s; animation-delay:-9s;">SQL</span>
+    <span style="left:10%; top:78%; font-size:13px; animation-duration:33s; animation-delay:-15s;">UI/UX</span>
+    <span style="left:44%; top:12%; font-size:12px; animation-duration:31s; animation-delay:-7s;">DEV</span>
+    <span style="left:46%; top:48%; font-size:16px; animation-duration:40s; animation-delay:-22s;">&lt;/&gt;</span>
+  </div>
+
+
+  <div class="absolute -top-48 left-1/2 h-[680px] w-[1200px] rounded-full blur-3xl opacity-25 bg-blob bg-blobA"
+       style="transform: translate3d(-50%,0,0); animation: blobDriftA 10s ease-in-out infinite;"></div>
+
+  <div class="absolute top-[18%] -left-40 h-[420px] w-[420px] rounded-full blur-3xl opacity-20 bg-blob2 bg-blobB"
+       style="animation: blobDriftB 12s ease-in-out infinite;"></div>
+
+  <div class="absolute -bottom-56 -right-56 h-[620px] w-[620px] rounded-full blur-3xl opacity-[.18] bg-blob3 bg-blobC"
+       style="animation: blobDriftC 14s ease-in-out infinite;"></div>
+
+<div class="bubbles opacity-[.45]">
+      <span style="left:7%;  width:10px; height:10px; animation-duration:18s; animation-delay:-4s;"></span>
+    <span style="left:15%; width:14px; height:14px; animation-duration:22s; animation-delay:-10s;"></span>
+    <span style="left:26%; width:8px;  height:8px;  animation-duration:16s; animation-delay:-6s;"></span>
+    <span style="left:36%; width:18px; height:18px; animation-duration:24s; animation-delay:-12s;"></span>
+    <span style="left:48%; width:12px; height:12px; animation-duration:20s; animation-delay:-8s;"></span>
+    <span style="left:58%; width:9px;  height:9px;  animation-duration:17s; animation-delay:-2s;"></span>
+    <span style="left:68%; width:16px; height:16px; animation-duration:23s; animation-delay:-9s;"></span>
+    <span style="left:78%; width:11px; height:11px; animation-duration:19s; animation-delay:-5s;"></span>
+    <span style="left:88%; width:20px; height:20px; animation-duration:26s; animation-delay:-14s;"></span>
+    <span style="left:94%; width:7px;  height:7px;  animation-duration:15s; animation-delay:-3s;"></span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="sticky top-0 z-50 backdrop-blur bg-[var(--bg)]/70 border-b border-[var(--border)]/70">
+<div class="header-row max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+  <!-- Brand -->
+<a class="brand-lock flex items-center gap-3 font-semibold tracking-tight min-w-0" href="#top">
+  <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-white/5 border border-[var(--border)] overflow-hidden">
+<img alt="Aqua.Tech logo" class="h-9 w-9 object-contain" src="logoo.jpeg"/>
+</span>
+<span class="leading-tight min-w-0">
+<span class="block truncate">Aqua.Tech</span>
+<span class="block text-xs font-normal text-[var(--muted)]" data-i18n="brand.sub"> </span>
+</span>
+</a>
+<nav class="desktop-nav hidden md:flex items-center gap-2 text-sm text-[var(--muted2)]">
+  <a class="nav-link" href="#about" data-i18n="nav.about">من نحن</a>
+  <a class="nav-link" href="#services" data-i18n="nav.services">الخدمات</a>
+  <a class="nav-link" href="#process" data-i18n="nav.process">طريقة العمل</a>
+  <a class="nav-link" href="#why-us" data-i18n="nav.why">ليش نحن</a>
+  <a class="nav-link" href="#faq" data-i18n="nav.faq">الأسئلة</a>
+  <a class="nav-link" href="#contact" data-i18n="nav.contact">تواصل معنا</a>
+</nav>
+<div class="flex items-center gap-2">
+<!-- Language toggle -->
+<button aria-label="Toggle language" class="inline-flex items-center gap-2 rounded-2xl px-3 py-2 bg-white/5 hover:bg-white/7 border border-[var(--border)] transition text-sm" id="langToggle">
+<span style="font-family:Inter,system-ui;">EN</span>
+<span class="text-xs text-[var(--muted)]">🌐</span>
+</button>
+<!-- WhatsApp -->
+<a class="inline-flex items-center gap-2 rounded-2xl px-3 py-2 bg-white/5 hover:bg-white/7 border border-[var(--border)] transition" href="https://api.whatsapp.com/send/?phone=962781662869&text&type=phone_number&app_absent=0" id="waLinkHeader" target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24" class="h-4 w-4 text-[var(--p1)]" fill="currentColor" aria-hidden="true">
+  <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.67a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.41Zm-8.46 18.28h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.52-5.22c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.13 1.03 6.99 2.89a9.83 9.83 0 0 1 2.9 6.98c0 5.45-4.43 9.86-9.85 9.86Zm5.74-7.86c-.31-.15-1.85-.91-2.14-1.01-.29-.11-.5-.15-.72.15-.21.31-.82 1.01-1 1.22-.19.21-.37.23-.68.08-.31-.15-1.31-.48-2.49-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.47.13-.62.14-.14.31-.37.46-.55.15-.18.21-.31.31-.51.1-.21.05-.38-.03-.53-.08-.15-.72-1.74-.99-2.38-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.53.08-.81.38-.28.31-1.07 1.05-1.07 2.57s1.1 2.99 1.25 3.2c.15.21 2.17 3.3 5.25 4.63.73.31 1.3.49 1.74.62.73.23 1.39.2 1.92.12.58-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.14-.29-.22-.6-.38Z"/>
+</svg>
+<span class="hidden sm:inline text-sm" data-i18n="btn.whatsapp">واتساب</span>
+</a>
+
+<!-- Mobile menu button -->
+<button id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false"
+  class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-2xl bg-white/5 hover:bg-white/7 border border-[var(--border)] transition">
+  <svg id="menuIconOpen" aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M4 7h16M4 12h16M4 17h16"></path>
+  </svg>
+  <svg id="menuIconClose" aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 hidden" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M6 6l12 12M18 6l-12 12"></path>
+  </svg>
+</button>
+
+<!-- CTA -->
+
+</div>
+</div>
+
+<!-- Mobile menu panel -->
+<div id="mobileMenu" class="md:hidden hidden border-t border-[var(--border)]/70 bg-[var(--bg)]/85 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1 text-sm text-[var(--muted2)]">
+    <a class="py-2 hover:text-white transition" href="#about" data-i18n="nav.about">من نحن</a>
+    <a class="py-2 hover:text-white transition" href="#services" data-i18n="nav.services">الخدمات</a>
+    <a class="py-2 hover:text-white transition" href="#process" data-i18n="nav.process">طريقة العمل</a>
+    <a class="py-2 hover:text-white transition" href="#why-us" data-i18n="nav.why">ليش نحن</a>
+    <a class="py-2 hover:text-white transition" href="#faq" data-i18n="nav.faq">الأسئلة</a>
+    <a class="py-2 hover:text-white transition" href="#contact" data-i18n="nav.contact">تواصل معنا</a>
+
+    <a id="waLinkMobile" class="mt-3 inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 bg-white/5 hover:bg-white/7 border border-[var(--border)] transition"
+       href="https://api.whatsapp.com/send/?phone=962781662869&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" class="h-4 w-4 text-[var(--p1)]" fill="currentColor" aria-hidden="true">
+        <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.67a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.41Zm-8.46 18.28h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.52-5.22c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.13 1.03 6.99 2.89a9.83 9.83 0 0 1 2.9 6.98c0 5.45-4.43 9.86-9.85 9.86Zm5.74-7.86c-.31-.15-1.85-.91-2.14-1.01-.29-.11-.5-.15-.72.15-.21.31-.82 1.01-1 1.22-.19.21-.37.23-.68.08-.31-.15-1.31-.48-2.49-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.47.13-.62.14-.14.31-.37.46-.55.15-.18.21-.31.31-.51.1-.21.05-.38-.03-.53-.08-.15-.72-1.74-.99-2.38-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.53.08-.81.38-.28.31-1.07 1.05-1.07 2.57s1.1 2.99 1.25 3.2c.15.21 2.17 3.3 5.25 4.63.73.31 1.3.49 1.74.62.73.23 1.39.2 1.92.12.58-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.14-.29-.22-.6-.38Z"/>
+      </svg>
+      <span data-i18n="btn.whatsapp">واتساب</span>
+    </a>
+  </div>
+</div>
+
+</header>
+<!-- ===== HERO ===== -->
+<main class="relative overflow-x-hidden" id="top">
+<div class="pointer-events-none absolute inset-0 dotgrid opacity-[.35]"></div>
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 h-[560px] w-[1020px] rounded-full blur-3xl opacity-30" style="background:
+          radial-gradient(circle at 20% 20%, rgba(34,211,238,.55), transparent 55%),
+          radial-gradient(circle at 70% 30%, rgba(96,165,250,.45), transparent 55%),
+          radial-gradient(circle at 45% 80%, rgba(56,189,248,.40), transparent 55%);">
+</div>
+<!-- Tech overlay -->
+<div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden opacity-[.28]">
+<svg class="absolute -top-10 right-0 w-[820px] h-[520px]" fill="none" viewbox="0 0 820 520">
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="g1" x1="60" x2="760" y1="40" y2="480">
+<stop stop-color="rgba(34,211,238,.9)"></stop>
+<stop offset="1" stop-color="rgba(96,165,250,.85)"></stop>
+</lineargradient>
+</defs>
+<path d="M70 110H260C286 110 298 124 298 150V190C298 216 312 230 338 230H520" opacity=".65" stroke="url(#g1)" stroke-width="1.2"></path>
+<path d="M120 310H330C356 310 370 296 370 270V240C370 214 384 200 410 200H620" opacity=".55" stroke="url(#g1)" stroke-width="1.2"></path>
+<path d="M160 420H340C366 420 382 406 382 380V340C382 314 396 300 422 300H720" opacity=".45" stroke="url(#g1)" stroke-width="1.2"></path>
+<g opacity=".45">
+<text fill="rgba(230,240,255,.9)" font-family="Inter, system-ui" font-size="56" x="520" y="120">&lt;/&gt;</text>
+<text fill="rgba(168,179,199,.9)" font-family="Inter, system-ui" font-size="14" x="570" y="165">code • ship • scale</text>
+</g>
+</svg>
+</div>
+<section class="relative grain">
+<div class="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 pt-10 sm:pt-12 md:pt-16 lg:pt-20 pb-8 sm:pb-10 md:pb-14 lg:pb-16">
+<div class="hero-layout grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+  <!-- Left -->
+<div class="hero-copy">
+  <p class="inline-flex w-fit max-w-full flex-wrap items-center gap-2 text-xs md:text-sm leading-6 text-[var(--muted2)] bg-white/5 border border-[var(--border)] rounded-full px-3 py-2">
+<span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+<span data-i18n="hero.badge">حلول رقمية سلسة — من الفكرة للإطلاق</span>
+</p>
+<h1 class="mt-5 text-[clamp(1.8rem,4.5vw,3.4rem)] font-semibold leading-[1.35] md:leading-[1.22] tracking-normal">
+      <span class="block" data-i18n="hero.h1a">نطور مواقع وتطبيقات</span>
+  <span class="block text-transparent bg-clip-text bg-gradient-to-l from-[var(--p2)] to-[var(--p1)]" data-i18n="hero.h1b">تساعد شركتك تكبر وتبيع أكثر</span>
+</h1>
+<p class="mt-5 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base md:text-lg text-[var(--muted)] leading-7 sm:leading-8 break-words whitespace-normal" data-i18n="hero.desc">
+                   Aqua.Tech نساعد الشركات ورواد الأعمال في بناء مواقع إلكترونية وتطبيقات وحلول رقمية احترافية، من الفكرة إلى الإطلاق، بطريقة واضحة وسريعة ومناسبة للنمو.
+            </p>
+<div class="hero-stats mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[var(--muted)] justify-items-center">
+<div class="hero-stat-card mx-auto">
+    <div class="text-white font-semibold" data-i18n="stats.fastT">سريع</div>
+<div class="mt-1" data-i18n="stats.fastD">تنفيذ منظم</div>
+</div>
+<div class="hero-stat-card mx-auto">
+    <div class="text-white font-semibold" data-i18n="stats.clearT">واضح</div>
+<div class="mt-1" data-i18n="stats.clearD">تواصل شفاف</div>
+</div>
+<div class="hero-stat-card mx-auto">
+    <div class="text-white font-semibold" data-i18n="stats.qualityT">مضمون</div>
+<div class="mt-1" data-i18n="stats.qualityD">جودة + دعم</div>
+</div>
+</div>
+<div class="hero-actions">
+  <a href="#contact" class="hero-primary-btn font-semibold" data-i18n="hero.ctaPrimary">احجز استشارة مجانية</a>
+  <a href="#services" class="hero-secondary-btn font-medium" data-i18n="hero.ctaSecondary">شوف خدماتنا</a>
+</div>
+</div>
+<!-- Right -->
+<div class="hero-panel-wrap relative w-full flex justify-center md:flex md:justify-start">
+    <div aria-hidden="true" class="hidden md:block pointer-events-none absolute -top-10 -right-6 floatB">
+  <div class="h-24 w-24 rounded-[28px] border border-[var(--border)]" style="background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%),
+                          radial-gradient(circle at 60% 60%, rgba(34,211,238,.35), transparent 55%),
+                          linear-gradient(135deg, rgba(34,211,238,.18), rgba(96,165,250,.10));
+                          box-shadow: 0 25px 70px rgba(0,0,0,.55);">
+</div>
+</div>
+<div aria-hidden="true" class="hidden md:block pointer-events-none absolute -bottom-10 -left-6 floatA">
+  <div class="h-28 w-28 rounded-full border border-[var(--border)]" style="background: radial-gradient(circle at 28% 28%, rgba(255,255,255,.25), transparent 40%),
+                          radial-gradient(circle at 65% 65%, rgba(96,165,250,.30), transparent 55%),
+                          linear-gradient(135deg, rgba(56,189,248,.14), rgba(34,211,238,.10));
+                          filter: drop-shadow(0 24px 70px rgba(0,0,0,.6));">
+</div>
+</div>
+<div aria-hidden="true" class="hidden md:block pointer-events-none absolute top-16 -left-2 floatC">
+  <div class="rounded-2xl px-4 py-3 bg-white/5 border border-[var(--border)] shadow-aqua">
+<div class="text-[11px] text-[var(--muted)]">DEV MODE</div>
+<div class="mt-1 font-semibold text-white/90" style="font-family: Inter, system-ui;">&lt;/&gt; Aqua.Tech</div>
+</div>
+</div>
+<div class="hero-panel w-[calc(100%-2rem)] max-w-[22rem] sm:w-full sm:max-w-[26rem] md:max-w-none me-auto ms-0 rounded-3xl p-5 sm:p-6 md:p-7 bg-white/5 border border-[var(--border)] shadow-[0_18px_60px_rgba(0,0,0,.55)] relative overflow-hidden">
+    <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-96 blur-3xl opacity-40" style="background: radial-gradient(circle, rgba(96,165,250,.50), transparent 60%);"></div>
+<div class="hero-card-head flex items-center justify-between">
+  <div class="hero-panel-copy">
+    <div class="text-sm text-[var(--muted)]" data-i18n="hero.cardLabel">خدماتنا الأساسية</div>
+    <div class="mt-1 text-lg font-semibold" data-i18n="hero.cardTitle">حزمة متكاملة لنموك الرقمي</div>
+  </div>
+
+  <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 border border-[var(--border)] overflow-hidden">
+    <img alt="Aqua.Tech logo" class="h-10 w-10 object-contain" src="logoo.jpeg"/>
+  </span>
+</div>
+<div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+  <div class="hero-mini-card rounded-2xl p-4 bg-[var(--surface)]/70 border border-[var(--border)]">
+<div class="font-medium">Apps</div>
+<div class="mt-1 text-[var(--muted)] text-xs" data-i18n="mini.apps">iOS / Android</div>
+</div>
+<div class="hero-mini-card rounded-2xl p-4 bg-[var(--surface)]/70 border border-[var(--border)]">
+<div class="font-medium">Webs</div>
+<div class="mt-1 text-[var(--muted)] text-xs" data-i18n="mini.webs">مواقع + متاجر</div>
+</div>
+<div class="hero-mini-card rounded-2xl p-4 bg-[var(--surface)]/70 border border-[var(--border)]">
+<div class="font-medium">Custom</div>
+<div class="mt-1 text-[var(--muted)] text-xs" data-i18n="mini.custom">أنظمة وأتمتة</div>
+</div>
+<div class="hero-mini-card rounded-2xl p-4 bg-[var(--surface)]/70 border border-[var(--border)]">
+<div class="font-medium">Design</div>
+<div class="mt-1 text-[var(--muted)] text-xs" data-i18n="mini.design">UI/UX + هوية</div>
+</div>
+</div>
+<!-- Terminal -->
+<div class="hero-terminal mt-6 rounded-2xl overflow-hidden border border-[var(--border)] bg-[#071221] shadow-aqua">
+<div class="px-4 py-2 flex items-center justify-between border-b border-[var(--border)] bg-white/5">
+<div class="flex items-center gap-2" style="direction:ltr">
+<span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
+<span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
+<span class="h-2.5 w-2.5 rounded-full bg-emerald-300/80"></span>
+</div>
+<div class="text-xs text-[var(--muted)]" style="font-family: Inter, system-ui;">terminal • deploy</div>
+</div>
+<pre class="px-4 py-3 text-[12px] leading-5 text-[var(--muted2)] overflow-x-auto" style="direction:ltr; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+<span class="text-white/80">$</span> npx create-aqua-app
+<span class="text-white/80">$</span> build --optimize
+<span class="text-white/80">$</span> deploy --env=prod
+<span class="text-[var(--p1)]">✔</span> shipped in <span class="text-[var(--p2)]">minutes</span> — performance ✅</pre>
+</div>
+<div class="hero-ready mt-6 rounded-2xl p-4 bg-gradient-to-br from-[var(--p1)]/10 to-[var(--p2)]/10 border border-[var(--border)]">
+<a href="#contact" class="text-sm font-medium inline-flex items-center gap-2 hover:text-white transition" data-i18n="hero.readyT">جاهز نبدأ؟</a>
+<div class="mt-1 text-xs text-[var(--muted)]" data-i18n="hero.readyD">احكيلنا عن مشروعك وبنرجعلك بخطة ونطاق عمل واضح.</div>
+
+</div>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="mt-12 opacity-60">
+<svg class="w-full h-10" viewbox="0 0 1200 120">
+<defs>
+<lineargradient id="wave" x1="0" x2="1" y1="0" y2="0">
+<stop stop-color="rgba(34,211,238,.55)"></stop>
+<stop offset="1" stop-color="rgba(96,165,250,.55)"></stop>
+</lineargradient>
+</defs>
+<path d="M0,60 C150,20 300,100 450,60 C600,20 750,100 900,60 C1050,20 1150,90 1200,60" fill="none" stroke="url(#wave)" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- ===== SERVICES (details) ===== -->
+<section class="border-t border-[var(--border)]/70" id="about">
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+    <div class="about-shell">
+      <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="about.h">من نحن</h2>
+      <p class="mt-4 text-[var(--muted2)] leading-8 max-w-3xl" data-i18n="about.d">Aqua.Tech فريق متخصص في تطوير المواقع والتطبيقات والحلول الرقمية الحديثة. نعمل على مساعدة الشركات ورواد الأعمال في بناء حضور رقمي قوي من خلال حلول احترافية، واضحة، وقابلة للنمو.</p>
+    </div>
+  </div>
+</section>
+
+<section class="border-t border-[var(--border)]/70" id="services">
+<div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+<div>
+<h2 class="text-2xl md:text-3xl font-semibold" data-i18n="details.h"> الخدمات</h2>
+<p class="mt-2 text-[var(--muted)]" data-i18n="details.sub"></p>
+</div>
+
+</div>
+<div class="mt-10 space-y-10">
+<!-- Apps -->
+<div class="w-[calc(100%-2rem)] max-w-[22rem] sm:max-w-none mx-auto rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua" id="svc-apps">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="text-xs text-[var(--muted)]" data-i18n="details.apps.kicker">تطبيقات الهاتف المحمول</div>
+<h3 class="mt-2 text-xl md:text-2xl font-semibold" data-i18n="details.apps.t">تطوير تطبيقات الهاتف المحمول</h3>
+<p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="details.apps.d">
+                  نبني تطبيقات سريعة وآمنة بتجربة مستخدم ممتازة—من فكرة MVP إلى تطبيق جاهز للنشر.
+                </p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.apps.p1">Native (Swift / Kotlin) أو Flutter حسب احتياجك</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.apps.p2">لوحة تحكم + APIs + إشعارات + تسجيل دخول</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.apps.p3">تحسين أداء + اختبارات + رفع على المتاجر</span></li>
+</ul>
+<a class="mt-5 inline-flex text-sm underline underline-offset-4 hover:text-white transition js-service-cta" data-service="apps" data-i18n="details.cta" href="#contact">اطلب هذه الخدمة →</a>
+</div>
+<div class="flex justify-center md:justify-end">
+<svg aria-hidden="true" class="w-full max-w-[360px] text-white/40" fill="none" viewbox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<rect height="240" rx="28" stroke="currentColor" stroke-width="6" width="140" x="140" y="40"></rect>
+<rect height="160" opacity=".8" rx="14" stroke="currentColor" stroke-width="4" width="80" x="170" y="70"></rect>
+<path d="M198 132l-22 18 22 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M222 132l22 18-22 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M210 190l10-60" stroke="currentColor" stroke-linecap="round" stroke-width="8"></path>
+<circle cx="210" cy="255" fill="currentColor" opacity=".7" r="8"></circle>
+<path d="M90 96c22-26 48-38 76-40" opacity=".35" stroke="currentColor" stroke-width="4"></path>
+<path d="M330 92c-20-22-44-34-68-36" opacity=".35" stroke="currentColor" stroke-width="4"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Web -->
+<div class="w-[calc(100%-2rem)] max-w-[22rem] sm:max-w-none mx-auto rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua" id="svc-web">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="md:order-2">
+<div class="text-xs text-[var(--muted)]" data-i18n="details.web.kicker">تطوير مواقع</div>
+<h3 class="mt-2 text-xl md:text-2xl font-semibold" data-i18n="details.web.t">مواقع احترافية سريعة</h3>
+<p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="details.web.d">
+                  صفحات هبوط، مواقع شركات، متاجر، ولوحات تحكم—مهيأة للسيو وسريعة على الموبايل.
+                </p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.web.p1">تصميم UI/UX + بناء Frontend حديث</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.web.p2">Backend / CMS / لوحة تحكم عند الحاجة</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.web.p3">سرعة + سيو + تتبع وتحليلات</span></li>
+</ul>
+<a class="mt-5 inline-flex text-sm underline underline-offset-4 hover:text-white transition js-service-cta" data-service="web" data-i18n="details.cta" href="#contact">اطلب هذه الخدمة →</a>
+</div>
+<div class="flex justify-center md:justify-start md:order-1">
+<svg aria-hidden="true" class="w-full max-w-[360px] text-white/40" fill="none" viewbox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<rect height="200" rx="18" stroke="currentColor" stroke-width="6" width="300" x="60" y="60"></rect>
+<path d="M60 92h300" opacity=".8" stroke="currentColor" stroke-width="6"></path>
+<circle cx="86" cy="78" fill="currentColor" opacity=".7" r="6"></circle>
+<circle cx="110" cy="78" fill="currentColor" opacity=".55" r="6"></circle>
+<circle cx="134" cy="78" fill="currentColor" opacity=".4" r="6"></circle>
+<path d="M150 150l-24 20 24 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M240 150l24 20-24 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M190 214l20-88" stroke="currentColor" stroke-linecap="round" stroke-width="8"></path>
+<path d="M300 235h-90" opacity=".55" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M300 210h-120" opacity=".35" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Custom Software -->
+<div class="w-[calc(100%-2rem)] max-w-[22rem] sm:max-w-none mx-auto rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua" id="svc-custom">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="text-xs text-[var(--muted)]" data-i18n="details.custom.kicker">برمجيات مخصصة</div>
+<h3 class="mt-2 text-xl md:text-2xl font-semibold" data-i18n="details.custom.t">أنظمة ولوحات تحكم على مقاس عملك</h3>
+<p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="details.custom.d">
+                  نبني أنظمة داخلية، أتمتة، تكاملات وربط APIs لتسهيل عملياتك وتقليل الوقت والتكلفة.
+                </p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.custom.p1">تحليل احتياج + تصميم قاعدة بيانات + صلاحيات</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.custom.p2">تكاملات: Payments / CRM / WhatsApp / وغيرها</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.custom.p3">تقارير + مراقبة + دعم وصيانة</span></li>
+</ul>
+<a class="mt-5 inline-flex text-sm underline underline-offset-4 hover:text-white transition js-service-cta" data-service="custom" data-i18n="details.cta" href="#contact">اطلب هذه الخدمة →</a>
+</div>
+<div class="flex justify-center md:justify-end">
+<svg aria-hidden="true" class="w-full max-w-[360px] text-white/40" fill="none" viewbox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<path d="M140 220c0 30 24 54 54 54s54-24 54-54-24-54-54-54-54 24-54 54Z" stroke="currentColor" stroke-width="6"></path>
+<path d="M194 148v-28" opacity=".8" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M194 300v-28" opacity=".8" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M120 220H92" opacity=".8" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M296 220h-28" opacity=".8" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M232 220a38 38 0 1 1-76 0 38 38 0 0 1 76 0Z" opacity=".7" stroke="currentColor" stroke-width="6"></path>
+<circle cx="320" cy="120" r="18" stroke="currentColor" stroke-width="6"></circle>
+<circle cx="92" cy="110" opacity=".8" r="14" stroke="currentColor" stroke-width="6"></circle>
+<circle cx="320" cy="260" opacity=".8" r="14" stroke="currentColor" stroke-width="6"></circle>
+<path d="M106 120l58 70" opacity=".35" stroke="currentColor" stroke-width="4"></path>
+<path d="M306 120l-58 70" opacity=".35" stroke="currentColor" stroke-width="4"></path>
+<path d="M306 260l-58-36" opacity=".35" stroke="currentColor" stroke-width="4"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Design -->
+<div class="w-[calc(100%-2rem)] max-w-[22rem] sm:max-w-none mx-auto rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua" id="svc-design">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="md:order-2">
+<div class="text-xs text-[var(--muted)]" data-i18n="details.design.kicker">تصميم</div>
+<h3 class="mt-2 text-xl md:text-2xl font-semibold" data-i18n="details.design.t">UI/UX + هوية بصرية</h3>
+<p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="details.design.d">
+                  نصمم واجهات وتجربة مستخدم مريحة، مع هوية بصرية تعكس اسم Aqua.Tech وتزيد الثقة.
+                </p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.design.p1">Wireframes + UI Kit + Design System</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.design.p2">Branding: Logo use + ألوان + خطوط</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.design.p3">تصاميم سوشال + مواد تسويقية</span></li>
+</ul>
+<a class="mt-5 inline-flex text-sm underline underline-offset-4 hover:text-white transition js-service-cta" data-service="design" data-i18n="details.cta" href="#contact">اطلب هذه الخدمة →</a>
+</div>
+<div class="flex justify-center md:justify-start md:order-1">
+<svg aria-hidden="true" class="w-full max-w-[360px] text-white/40" fill="none" viewbox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<path d="M90 230l80-80 60 60 100-100" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<circle cx="170" cy="150" fill="currentColor" opacity=".7" r="10"></circle>
+<circle cx="230" cy="210" fill="currentColor" opacity=".7" r="10"></circle>
+<circle cx="330" cy="110" fill="currentColor" opacity=".7" r="10"></circle>
+<path d="M120 90h180" opacity=".35" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M120 120h120" opacity=".25" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M120 260h140" opacity=".25" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M290 250l20-20 20 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Motion -->
+<div class="w-[calc(100%-2rem)] max-w-[22rem] sm:max-w-none mx-auto rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua" id="svc-motion">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="text-xs text-[var(--muted)]" data-i18n="details.motion.kicker">موشن جرافيك</div>
+<h3 class="mt-2 text-xl md:text-2xl font-semibold" data-i18n="details.motion.t">فيديوهات قصيرة تزيد التحويل</h3>
+<p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="details.motion.d">
+                  موشن ريلز وإعلانات وفيديوهات تعريفية… نص واضح + سيناريو + مونتاج يعبر عن منتجك.
+                </p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.motion.p1">Script + Storyboard + Style Frames</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.motion.p2">Animation + Sound + Subtitles</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.motion.p3">نسخ متعددة للمقاسات (Reels / Stories / Ads)</span></li>
+</ul>
+<a class="mt-5 inline-flex text-sm underline underline-offset-4 hover:text-white transition js-service-cta" data-service="motion" data-i18n="details.cta" href="#contact">اطلب هذه الخدمة →</a>
+</div>
+<div class="flex justify-center md:justify-end">
+<svg aria-hidden="true" class="w-full max-w-[360px] text-white/40" fill="none" viewbox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<rect height="160" rx="20" stroke="currentColor" stroke-width="6" width="260" x="80" y="80"></rect>
+<path d="M200 130l70 30-70 30v-60Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="6"></path>
+<path d="M120 60l10-20" opacity=".6" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M160 60l0-22" opacity=".4" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M300 60l10-20" opacity=".5" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M340 70l20-10" opacity=".35" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Social Media -->
+<div class="w-[calc(100%-2rem)] max-w-[22rem] sm:max-w-none mx-auto rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua" id="svc-social">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="md:order-2">
+<div class="text-xs text-[var(--muted)]" data-i18n="details.social.kicker">إدارة سوشال ميديا</div>
+<h3 class="mt-2 text-xl md:text-2xl font-semibold" data-i18n="details.social.t">نخلي حضورك قوي ومستمر</h3>
+<p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="details.social.d">
+                  خطة محتوى، تصميم بوستات، جدولة، وإدارة الرسائل—مع تقارير وتحسين شهري.
+                </p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.social.p1">Content Plan + Calendar + Copywriting</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.social.p2">Design + Reels + Brand consistency</span></li>
+<li class="flex gap-2"><span class="text-[var(--p1)]">•</span><span data-i18n="details.social.p3">Analytics + تحسين النتائج (Reach/Leads)</span></li>
+</ul>
+<a class="mt-5 inline-flex text-sm underline underline-offset-4 hover:text-white transition js-service-cta" data-service="social" data-i18n="details.cta" href="#contact">اطلب هذه الخدمة →</a>
+</div>
+<div class="flex justify-center md:justify-start md:order-1">
+<svg aria-hidden="true" class="w-full max-w-[360px] text-white/40" fill="none" viewbox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+<path d="M120 210l80-40v80l-80-40Z" stroke="currentColor" stroke-linejoin="round" stroke-width="6"></path>
+<path d="M200 170h40c36 0 65-20 80-50" opacity=".8" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M280 120l40-20-20 40" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<rect height="60" opacity=".7" rx="16" stroke="currentColor" stroke-width="6" width="120" x="90" y="90"></rect>
+<path d="M120 110h60" opacity=".35" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M120 130h40" opacity=".25" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path d="M290 220c0 18-14 32-32 32s-32-14-32-32 14-32 32-32 32 14 32 32Z" opacity=".8" stroke="currentColor" stroke-width="6"></path>
+<path d="M244 220l10 10 18-22" opacity=".8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="border-t border-[var(--border)]/70" id="process">
+<div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+<div>
+<h2 class="text-2xl md:text-3xl font-semibold" data-i18n="process.h">طريقة العمل</h2>
+<p class="mt-2 text-[var(--muted)]" data-i18n="process.sub"></p>
+</div>
+
+</div>
+<div class="mt-8 space-y-4">
+<!-- Step 01 -->
+<div class="rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua relative overflow-hidden">
+<div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-44 w-[560px] blur-3xl opacity-25" style="background: radial-gradient(circle, rgba(34,211,238,.35), transparent 60%);"></div>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/5 border border-[var(--border)] text-xs text-[var(--muted2)]">
+<span class="h-2 w-2 rounded-full bg-[var(--p1)]"></span>
+<span>01</span>
+</div>
+<h3 class="mt-3 text-xl font-semibold" data-i18n="process.s1t">اكتشاف</h3>
+<p class="mt-2 text-[var(--muted)]" data-i18n="process.s1d">نفهم الهدف والجمهور ونحدد النطاق والتوقيت.</p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p1)]"></span><span data-i18n="process.s1b1">جلسة اكتشاف سريعة + تحديد نطاق</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p2)]"></span><span data-i18n="process.s1b2">تقدير وقت وتكلفة بشكل واضح</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p3)]"></span><span data-i18n="process.s1b3">اقتراح تقنيات مناسبة للمشروع</span></li>
+</ul>
+</div>
+<div class="rounded-3xl p-6 bg-[var(--surface)]/70 border border-[var(--border)]">
+<svg aria-hidden="true" class="w-full h-auto" fill="none" viewbox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.9" stroke="rgba(200,212,234,0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">
+<path d="M140 90l-18 18 18 18"></path>
+<path d="M180 90l18 18-18 18"></path>
+<path d="M155 132l10-44"></path>
+<circle cx="110" cy="74" r="18"></circle>
+<path d="M123 87l24 24"></path>
+<path d="M105 66h10"></path>
+<path d="M95 74h10"></path>
+<path d="M198 160h84"></path>
+<path d="M40 160h130"></path>
+<path d="M56 168h90"></path>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua relative overflow-hidden">
+<div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-44 w-[560px] blur-3xl opacity-25" style="background: radial-gradient(circle, rgba(96,165,250,.35), transparent 60%);"></div>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="md:order-2">
+<div class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/5 border border-[var(--border)] text-xs text-[var(--muted2)]">
+<span class="h-2 w-2 rounded-full bg-[var(--p2)]"></span>
+<span>02</span>
+</div>
+<h3 class="mt-3 text-xl font-semibold" data-i18n="process.s2t">تصميم</h3>
+<p class="mt-2 text-[var(--muted)]" data-i18n="process.s2d">تجربة مستخدم + واجهات متناسقة مع الهوية.</p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p1)]"></span><span data-i18n="process.s2b1">Wireframes + UI Kit</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p2)]"></span><span data-i18n="process.s2b2">تصميم متجاوب Mobile-first</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p3)]"></span><span data-i18n="process.s2b3">تجربة مستخدم سلسة وواضحة</span></li>
+</ul>
+</div>
+<div class="md:order-1 rounded-3xl p-6 bg-[var(--surface)]/70 border border-[var(--border)]">
+<svg aria-hidden="true" class="w-full h-auto" fill="none" viewbox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.9" stroke="rgba(200,212,234,0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">
+<rect height="152" rx="18" width="232" x="44" y="34"></rect>
+<path d="M44 70h232"></path>
+<circle cx="70" cy="54" r="5"></circle>
+<circle cx="92" cy="54" r="5"></circle>
+<circle cx="114" cy="54" r="5"></circle>
+<rect height="18" rx="9" width="92" x="70" y="92"></rect>
+<rect height="14" rx="7" width="180" x="70" y="122"></rect>
+<rect height="14" rx="7" width="150" x="70" y="146"></rect>
+<path d="M210 92l40 0"></path>
+<path d="M210 110l40 0"></path>
+<path d="M210 128l40 0"></path>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua relative overflow-hidden">
+<div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-44 w-[560px] blur-3xl opacity-25" style="background: radial-gradient(circle, rgba(56,189,248,.35), transparent 60%);"></div>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/5 border border-[var(--border)] text-xs text-[var(--muted2)]">
+<span class="h-2 w-2 rounded-full bg-[var(--p3)]"></span>
+<span>03</span>
+</div>
+<h3 class="mt-3 text-xl font-semibold" data-i18n="process.s3t">تطوير</h3>
+<p class="mt-2 text-[var(--muted)]" data-i18n="process.s3d">بناء المنتج واختبارات جودة وأداء.</p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p1)]"></span><span data-i18n="process.s3b1">تطوير Frontend + Backend عند الحاجة</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p2)]"></span><span data-i18n="process.s3b2">اختبارات + تحسين أداء</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p3)]"></span><span data-i18n="process.s3b3">تسليم نسخة تجريبية للتقييم</span></li>
+</ul>
+</div>
+<div class="rounded-3xl p-6 bg-[var(--surface)]/70 border border-[var(--border)]">
+<svg aria-hidden="true" class="w-full h-auto" fill="none" viewbox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.9" stroke="rgba(200,212,234,0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">
+<path d="M60 54h200a18 18 0 0 1 18 18v86a18 18 0 0 1-18 18H60a18 18 0 0 1-18-18V72a18 18 0 0 1 18-18Z"></path>
+<path d="M78 88l-18 18 18 18"></path>
+<path d="M242 88l18 18-18 18"></path>
+<path d="M140 132l40-88"></path>
+<path d="M100 160h120"></path>
+<path d="M120 174h80"></path>
+<circle cx="74" cy="72" r="5"></circle>
+<circle cx="96" cy="72" r="5"></circle>
+<circle cx="118" cy="72" r="5"></circle>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="rounded-3xl p-6 md:p-8 bg-white/5 border border-[var(--border)] shadow-aqua relative overflow-hidden">
+<div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-44 w-[560px] blur-3xl opacity-25" style="background: radial-gradient(circle, rgba(34,211,238,.30), transparent 60%);"></div>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="md:order-2">
+<div class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/5 border border-[var(--border)] text-xs text-[var(--muted2)]">
+<span class="h-2 w-2 rounded-full bg-[var(--p1)]"></span>
+<span>04</span>
+</div>
+<h3 class="mt-3 text-xl font-semibold" data-i18n="process.s4t">إطلاق ودعم</h3>
+<p class="mt-2 text-[var(--muted)]" data-i18n="process.s4d">إطلاق + تحسينات + صيانة حسب الحاجة.</p>
+<ul class="mt-4 space-y-2 text-sm text-[var(--muted2)]">
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p1)]"></span><span data-i18n="process.s4b1">نشر على الاستضافة/المتاجر</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p2)]"></span><span data-i18n="process.s4b2">مراقبة وتحسين مستمر</span></li>
+<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--p3)]"></span><span data-i18n="process.s4b3">صيانة ودعم حسب الاتفاق</span></li>
+</ul>
+</div>
+<div class="md:order-1 rounded-3xl p-6 bg-[var(--surface)]/70 border border-[var(--border)]">
+<svg aria-hidden="true" class="w-full h-auto" fill="none" viewbox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.9" stroke="rgba(200,212,234,0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">
+<path d="M160 44c28 24 52 54 52 82 0 28-23 50-52 50s-52-22-52-50c0-28 24-58 52-82Z"></path>
+<path d="M160 68v48"></path>
+<path d="M142 96h36"></path>
+<path d="M124 176h72"></path>
+<path d="M110 188h100"></path>
+<path d="M234 86l26-10"></path>
+<path d="M86 86l-26-10"></path>
+<path d="M252 136l26 10"></path>
+<path d="M68 136l-26 10"></path>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="border-t border-[var(--border)]/70" id="why-us">
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+    <div>
+      <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="why.h">ليش تختار Aqua.Tech</h2>
+      <p class="mt-2 text-[var(--muted)] max-w-3xl" data-i18n="why.sub">لأننا نركز على النتيجة، مش فقط الشكل — تنفيذ منظم، تواصل واضح، وحلول مناسبة لاحتياجك.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3 class="font-semibold text-white" data-i18n="why.c1t">تنفيذ واضح</h3>
+        <p class="mt-3 text-sm leading-7 text-[var(--muted2)]" data-i18n="why.c1d">خطة عمل واضحة من البداية حتى التسليم.</p>
+      </div>
+      <div class="why-card">
+        <h3 class="font-semibold text-white" data-i18n="why.c2t">حلول مخصصة</h3>
+        <p class="mt-3 text-sm leading-7 text-[var(--muted2)]" data-i18n="why.c2d">نطوّر حسب احتياج مشروعك، مش قوالب جاهزة فقط.</p>
+      </div>
+      <div class="why-card">
+        <h3 class="font-semibold text-white" data-i18n="why.c3t">تواصل سريع</h3>
+        <p class="mt-3 text-sm leading-7 text-[var(--muted2)]" data-i18n="why.c3d">متابعة واضحة وتحديثات مستمرة أثناء التنفيذ.</p>
+      </div>
+      <div class="why-card">
+        <h3 class="font-semibold text-white" data-i18n="why.c4t">دعم بعد التسليم</h3>
+        <p class="mt-3 text-sm leading-7 text-[var(--muted2)]" data-i18n="why.c4d">نظل معك بعد الإطلاق للتحسين والدعم عند الحاجة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="border-t border-[var(--border)]/70" id="faq">
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+    <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="faq.h">أسئلة متكررة</h2>
+    <p class="mt-2 text-[var(--muted)]" data-i18n="faq.sub"></p>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-4">
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA1">
+    <span data-i18n="faq.q1">كم يستغرق تنفيذ موقع أو تطبيق؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA1" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a1">حسب حجم العمل. بعد تحديد المتطلبات نرسل جدولًا زمنيًا واضحًا.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA2">
+    <span data-i18n="faq.q2">كيف يتم حساب سعر المشروع؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA2" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a2">بناءً على النطاق والميزات والتقنيات. تحصل على عرض سعر مفصل بالمراحل والتسليمات.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA3">
+    <span data-i18n="faq.q3">هل تقدمون تطويرًا مخصصًا بالكامل؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA3" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a3">نعم، نبني حلولًا على مقاس احتياجك مع إمكانية الربط والتكامل عبر APIs.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA4">
+    <span data-i18n="faq.q4">هل توفرون ERP؟ </span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA4" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a4">نعم، من التحليل والتخصيص والتكامل حتى التدريب والدعم المستمر.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA5">
+    <span data-i18n="faq.q5">هل توفرون الاستضافة والدومين ورفع الموقع؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA5" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a5">نعم عند الطلب، مع SSL ورفع الموقع وإعدادات تشغيل أساسية.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA6">
+    <span data-i18n="faq.q6">هل توجد صيانة بعد التسليم؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA6" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a6">نعم، باقات دعم وتحديثات أمنية وتحسينات أداء حسب الحاجة.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA7">
+    <span data-i18n="faq.q7">هل تسلمون الكود وملفات التصميم؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA7" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a7">نعم، تسليم منظم (كود + تصميم) مع شرح تشغيل واضح.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA8">
+    <span data-i18n="faq.q8">كيف تكون المتابعة أثناء التنفيذ؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA8" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a8">نتفق على قناة تواصل وتحديثات حسب المراحل مع توثيق أي تغيير.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA9">
+    <span data-i18n="faq.q9">هل تقدمون تصميم وهوية وموشن وسوشال؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA9" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a9">نعم، UI/UX وهوية بصرية وموشن وإدارة سوشال ضمن باقات.</div>
+</div>
+<div class="faq-item rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition">
+  <button type="button" class="faq-q cursor-pointer font-medium" aria-expanded="false" aria-controls="faqA10">
+    <span data-i18n="faq.q10">هل يمكن توقيع NDA وحماية البيانات؟</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+  <div id="faqA10" class="faq-a mt-3 text-sm text-[var(--muted)]" data-i18n="faq.a10">نعم، يمكن توقيع NDA ونتبع ممارسات أمان لحماية البيانات أثناء التطوير.</div>
+</div>
+    </div></div>
+  </div>
+</section>
+
+<section class="border-t border-[var(--border)]/70" id="contact">
+<div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+<div class="grid md:grid-cols-2 gap-8 items-start">
+<div>
+<h2 class="text-2xl md:text-3xl font-semibold" data-i18n="contact.h">تواصل معنا</h2>
+<p class="mt-2 text-[var(--muted)]" data-i18n="contact.sub">اكتب تفاصيل مشروعك، وبنرجعلك بأقرب وقت بخطة ونطاق عمل واضح.</p>
+<div class="mt-6 space-y-3 text-sm text-[var(--muted2)]">
+<div class="rounded-3xl p-5 bg-white/5 border border-[var(--border)]">
+<div class="text-[var(--muted)] text-xs" data-i18n="contact.wa">واتساب</div>
+<a class="mt-1 inline-flex underline underline-offset-4 hover:text-white transition relative z-10 pointer-events-auto" href="https://api.whatsapp.com/send/?phone=962781662869&text&type=phone_number&app_absent=0" id="waLinkContact" target="_blank" data-external="1" rel="noopener noreferrer">
+<span data-i18n="contact.waAction">بدء محادثة على واتساب</span>
+</a>
+</div>
+<div class="rounded-3xl p-5 bg-white/5 border border-[var(--border)]">
+<div class="text-[var(--muted)] text-xs" data-i18n="contact.email">إيميل</div>
+<a class="mt-1 inline-flex underline underline-offset-4 hover:text-white transition relative z-10 pointer-events-auto" href="mailto:aquatechqat@gmail.com" id="emailLink" data-external="1">
+<span data-i18n="contact.emailAction">راسلنا عبر الإيميل</span>
+</a>
+</div>
+<div class="rounded-3xl p-5 bg-white/5 border border-[var(--border)]">
+<div class="text-[var(--muted)] text-xs" data-i18n="contact.social">حسابات التواصل</div>
+<div class="mt-3 flex flex-wrap gap-2">
+<!-- WhatsApp -->
+<a aria-label="WhatsApp" class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-[var(--surface)]/70 border border-[var(--border)] hover:bg-[var(--surface)]/90 hover:text-white transition relative z-10 pointer-events-auto" href="https://api.whatsapp.com/send/?phone=962781662869&text&type=phone_number&app_absent=0" id="socialWA" rel="noopener noreferrer" target="_blank" title="WhatsApp" data-external="1">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.67a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.41Zm-8.46 18.28h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.52-5.22c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.13 1.03 6.99 2.89a9.83 9.83 0 0 1 2.9 6.98c0 5.45-4.43 9.86-9.85 9.86Zm5.74-7.86c-.31-.15-1.85-.91-2.14-1.01-.29-.11-.5-.15-.72.15-.21.31-.82 1.01-1 1.22-.19.21-.37.23-.68.08-.31-.15-1.31-.48-2.49-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.47.13-.62.14-.14.31-.37.46-.55.15-.18.21-.31.31-.51.1-.21.05-.38-.03-.53-.08-.15-.72-1.74-.99-2.38-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.53.08-.81.38-.28.31-1.07 1.05-1.07 2.57s1.1 2.99 1.25 3.2c.15.21 2.17 3.3 5.25 4.63.73.31 1.3.49 1.74.62.73.23 1.39.2 1.92.12.58-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.14-.29-.22-.6-.38Z"></path>
+</svg>
+</a>
+<!-- Email -->
+<a aria-label="Email" class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-[var(--surface)]/70 border border-[var(--border)] hover:bg-[var(--surface)]/90 hover:text-white transition relative z-10 pointer-events-auto" href="mailto:aquatechqat@gmail.com" id="socialEmail" rel="noopener noreferrer" title="Email">
+<svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"></path>
+<path d="m22 8-10 7L2 8"></path>
+</svg>
+</a>
+<!-- Instagram -->
+<a aria-label="Instagram" class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-[var(--surface)]/70 border border-[var(--border)] hover:bg-[var(--surface)]/90 hover:text-white transition relative z-10 pointer-events-auto" href="https://www.instagram.com/aqua.tech.t/" id="socialIG" rel="noopener noreferrer" target="_blank" title="Instagram" data-external="1">
+<svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="18" rx="5" width="18" x="3" y="3"></rect>
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"></path>
+<path d="M17.5 6.5h.01"></path>
+</svg>
+</a>
+<!-- Facebook -->
+<a aria-label="Facebook" class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-[var(--surface)]/70 border border-[var(--border)] hover:bg-[var(--surface)]/90 hover:text-white transition relative z-10 pointer-events-auto" href="https://www.facebook.com/aqua.tech.t" id="socialFB" rel="noopener noreferrer" target="_blank" title="Facebook" data-external="1">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M22 12a10 10 0 1 0-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56V12h2.76l-.44 2.88h-2.32v6.99A10 10 0 0 0 22 12z"></path>
+</svg>
+</a>
+<!-- LinkedIn -->
+<a aria-label="LinkedIn" class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-[var(--surface)]/70 border border-[var(--border)] hover:bg-[var(--surface)]/90 hover:text-white transition relative z-10 pointer-events-auto" href="https://www.linkedin.com/in/aqua-tech-/" id="socialLI" rel="noopener noreferrer" target="_blank" title="LinkedIn" data-external="1">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M20.45 20.45h-3.55v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.7H9.32V9h3.4v1.56h.05c.47-.9 1.63-1.86 3.36-1.86 3.59 0 4.25 2.36 4.25 5.43v6.32ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.55V9H3.56v11.45Z"></path>
+</svg>
+</a>
+<!-- GitHub -->
+<a aria-label="GitHub" class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-[var(--surface)]/70 border border-[var(--border)] hover:bg-[var(--surface)]/90 hover:text-white transition relative z-10 pointer-events-auto" href="https://github.com/aqua-tech-t" id="socialGH" rel="noopener noreferrer" target="_blank" title="GitHub" data-external="1">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 .5A11.5 11.5 0 0 0 8.36 23c.58.1.79-.25.79-.55v-2.1c-3.22.7-3.9-1.37-3.9-1.37-.53-1.33-1.29-1.68-1.29-1.68-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.57-.3-5.27-1.28-5.27-5.7 0-1.26.45-2.28 1.19-3.09-.12-.3-.52-1.52.11-3.17 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.64 1.65.24 2.87.12 3.17.74.81 1.18 1.83 1.18 3.09 0 4.43-2.71 5.4-5.29 5.69.41.36.78 1.06.78 2.14v3.18c0 .3.2.66.8.55A11.5 11.5 0 0 0 12 .5Z"></path>
+</svg>
+</a>
+</div>
+</div>
+<div class="rounded-3xl p-5 bg-white/5 border border-[var(--border)]">
+<div class="text-[var(--muted)] text-xs" data-i18n="contact.loc">الموقع</div>
+<div class="mt-1" data-i18n="contact.locV">عمّان، الأردن</div>
+</div>
+</div>
+</div>
+<form class="rounded-3xl p-6 md:p-7 bg-white/5 border border-[var(--border)]" id="contactForm">
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm">
+<span class="text-[var(--muted)]" data-i18n="form.name">الاسم</span>
+<input class="mt-2 w-full rounded-2xl border border-[var(--border)] px-4 py-3 outline-none focus:border-[var(--p1)] focus:ring-2 focus:ring-[var(--p1)]/20 transition form-field" id="fName" name="name" type="text" autocomplete="name" required placeholder="اسمك" data-ph-i18n="form.namePh"/>
+</label>
+<label class="text-sm">
+<span class="text-[var(--muted)]" data-i18n="form.contactLabel">رقم واتساب أو الإيميل</span>
+<input class="mt-2 w-full rounded-2xl border border-[var(--border)] px-4 py-3 outline-none focus:border-[var(--p1)] focus:ring-2 focus:ring-[var(--p1)]/20 transition form-field" id="fContact" name="contact" type="text" autocomplete="email" inputmode="email" placeholder="07XXXXXXXX أو example@mail.com" data-ph-i18n="form.contactPh"/>
+</label>
+</div>
+<label class="mt-4 block text-sm">
+<span class="text-[var(--muted)]" data-i18n="form.service">الخدمة المطلوبة</span>
+<select class="mt-2 w-full rounded-2xl border border-[var(--border)] px-4 py-3 outline-none focus:border-[var(--p1)] focus:ring-2 focus:ring-[var(--p1)]/20 transition form-field" id="fService" name="service">
+<option data-i18n="form.opt1">تطوير تطبيق</option>
+<option data-i18n="form.opt2">تطوير موقع</option>
+<option data-i18n="form.opt3">برمجيات مخصصة</option>
+<option data-i18n="form.opt4">تصميم</option>
+<option data-i18n="form.opt5">موشن جرافيك</option>
+<option data-i18n="form.opt6">إدارة سوشال ميديا</option>
+</select>
+</label>
+<div class="mt-4 grid sm:grid-cols-2 gap-4">
+  <label class="text-sm">
+    <span class="text-[var(--muted)]" data-i18n="form.budget">الميزانية التقريبية</span>
+    <select class="mt-2 w-full rounded-2xl border border-[var(--border)] px-4 py-3 outline-none focus:border-[var(--p1)] focus:ring-2 focus:ring-[var(--p1)]/20 transition form-field" id="fBudget" name="budget">
+      <option value="" data-i18n="form.budgetPlaceholder">اختر الميزانية</option>
+      <option data-i18n="form.budgetOpt1">أقل من 500 د.أ</option>
+      <option data-i18n="form.budgetOpt2">500 - 1500 د.أ</option>
+      <option data-i18n="form.budgetOpt3">1500 - 3000 د.أ</option>
+      <option data-i18n="form.budgetOpt4">3000+ د.أ</option>
+    </select>
+  </label>
+
+  <label class="text-sm">
+    <span class="text-[var(--muted)]" data-i18n="form.timeline">موعد التنفيذ</span>
+    <select class="mt-2 w-full rounded-2xl border border-[var(--border)] px-4 py-3 outline-none focus:border-[var(--p1)] focus:ring-2 focus:ring-[var(--p1)]/20 transition form-field" id="fTimeline" name="timeline">
+      <option value="" data-i18n="form.timelinePlaceholder">اختر الموعد</option>
+      <option data-i18n="form.timelineOpt1">بأسرع وقت</option>
+      <option data-i18n="form.timelineOpt2">خلال أسبوعين</option>
+      <option data-i18n="form.timelineOpt3">خلال شهر</option>
+      <option data-i18n="form.timelineOpt4">ما زلت أستكشف</option>
+    </select>
+  </label>
+</div>
+<label class="mt-4 block text-sm">
+<span class="text-[var(--muted)]" data-i18n="form.details">تفاصيل المشروع</span>
+<textarea class="mt-2 w-full rounded-2xl border border-[var(--border)] px-4 py-3 outline-none focus:border-[var(--p1)] focus:ring-2 focus:ring-[var(--p1)]/20 transition form-field" id="fDetails" name="details" autocomplete="off" placeholder="اكتب الهدف، المميزات، والموعد المتوقع…" data-ph-i18n="form.detailsPh" rows="5"></textarea>
+</label>
+<label class="hidden">
+  <span>Website</span>
+  <input id="fWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
+</label>
+<!-- ✅ إرسال إلى Google Sheets فقط -->
+<button class="quote-submit mt-5 w-full rounded-[1.65rem] px-5 py-4 sm:py-4 transition font-medium" id="sendLead" type="submit">
+<span class="quote-title text-[1.06rem] sm:text-lg" data-i18n="form.sendQuote">احصل على عرض سعر</span>
+<p class="quote-note mt-2 text-[.82rem] sm:text-sm text-center" data-i18n="form.replyNote">
+  نرد عادة خلال 24 ساعة بخطة واضحة ونطاق عمل مبدئي.
+</p>
+</button>
+<p class="mt-3 text-xs text-[var(--muted)]" id="formStatus"></p>
+</form>
+</div>
+</div>
+</section>
+
+<section class="border-t border-[var(--border)]/70" id="projects" hidden>
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="projects.h">المشاريع</h2>
+        <p class="mt-2 text-[var(--muted)]" data-i18n="projects.sub">
+             المشاريع التي تنجزها Aqua.Tech مع تفاصيل رائعة.
+        </p>
+      </div>
+
+
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- بطاقة مشروع (انسخها لاحقًا لإضافة مشاريع) -->
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p2)]/20 border border-[var(--border)] flex items-center justify-center"
+               style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">PJ</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="projects.meta1">مشروع</div>
+            <div class="font-semibold" data-i18n="projects.title1">مشروع (قريبًا)</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)]" data-i18n="projects.desc1">
+          بطاقة جاهزة للمستقبل — انسخها وبدّل الاسم والوصف والرابط عندما يصبح لديك مشروع.
+        </p>
+      </div>
+
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p2)]/20 border border-[var(--border)] flex items-center justify-center"
+               style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">PJ</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="projects.meta2">مشروع</div>
+            <div class="font-semibold" data-i18n="projects.title2">مشروع (قريبًا)</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)]" data-i18n="projects.desc2">
+          لاحقًا يمكنك إضافة صورة/لقطات شاشة وتقنيات مستخدمة ونتائج مختصرة.
+        </p>
+      </div>
+
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p2)]/20 border border-[var(--border)] flex items-center justify-center"
+               style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">PJ</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="projects.meta3">مشروع</div>
+            <div class="font-semibold" data-i18n="projects.title3">مشروع (قريبًا)</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)]" data-i18n="projects.desc3">
+          اترك هذه البطاقات فارغة الآن — واستبدلها لاحقًا بمشاريعك الحقيقية بسهولة.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-6 text-xs text-[var(--muted)]" data-i18n="projects.note">
+    </p>
+  </div>
+</section>
+
+<section id="team" class="border-t border-[var(--border)]/70" hidden>
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="team.h">فريقنا</h2>
+        <p class="mt-2 text-[var(--muted)]" data-i18n="team.sub">   الفريق الذي يصنع حلول Aqua.Tech — مهارات متعددة، جودة عالية، وتعاون مستمر.</p>
+      </div>
+
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- بطاقة عضو (انسخها لاحقًا لإضافة أعضاء الفريق) -->
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p2)]/20 border border-[var(--border)] flex items-center justify-center"
+               style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">AT</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="team.role1">الدور</div>
+            <div class="font-semibold" data-i18n="team.name1">عضو فريق (قريبًا)</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="team.bio1">
+          سنضيف هنا وصفًا مختصرًا عن الخبرة والمسؤوليات وروابط التواصل عند توفر فريق العمل.
+        </p>
+      </div>
+
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p2)]/20 to-[var(--p3)]/20 border border-[var(--border)] flex items-center justify-center"
+               style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">AT</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="team.role2">الدور</div>
+            <div class="font-semibold" data-i18n="team.name2">عضو فريق (قريبًا)</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="team.bio2">
+          يمكن لاحقًا إضافة صورة شخصية، مهارات، وروابط LinkedIn لكل عضو بسهولة.
+        </p>
+      </div>
+
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p3)]/20 border border-[var(--border)] flex items-center justify-center"
+               style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">AT</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="team.role3">الدور</div>
+            <div class="font-semibold" data-i18n="team.name3">عضو فريق (قريبًا)</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)] leading-relaxed" data-i18n="team.bio3">
+          هذا القسم مُجهّز للمستقبل — فقط انسخ بطاقة وبدّل النصوص والصورة.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partners" class="border-t border-[var(--border)]/70" hidden>
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="partners.h">شركاؤنا</h2>
+        <p class="mt-2 text-[var(--muted)]" data-i18n="partners.sub">نفخر بالتعاون مع شركاء وجهات نعمل معها لبناء حلول رقمية موثوقة وفعالة.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p2)]/20 border border-[var(--border)] flex items-center justify-center" style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">P1</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="partners.meta1">شريك</div>
+            <div class="font-semibold" data-i18n="partners.title1">اسم الشريك الأول</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)] line-clamp-3" data-i18n="partners.ex1">
+          أضف هنا وصفًا مختصرًا لطبيعة الشراكة أو نوع الخدمات التي تم تنفيذها مع هذا الشريك.
+        </p>
+      </div>
+
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p2)]/20 to-[var(--p3)]/20 border border-[var(--border)] flex items-center justify-center" style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">P2</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="partners.meta2">شريك</div>
+            <div class="font-semibold" data-i18n="partners.title2">اسم الشريك الثاني</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)] line-clamp-3" data-i18n="partners.ex2">
+          يمكنك لاحقًا وضع نبذة قصيرة عن القطاع أو المشروع المشترك أو القيمة التي أضفناها معًا.
+        </p>
+      </div>
+
+      <div class="rounded-3xl p-6 bg-white/5 border border-[var(--border)] hover:bg-white/7 transition shadow-glow">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[var(--p1)]/20 to-[var(--p3)]/20 border border-[var(--border)] flex items-center justify-center" style="font-family:Inter,system-ui;">
+            <span class="text-white/80 font-semibold">P3</span>
+          </div>
+          <div>
+            <div class="text-xs text-[var(--muted)]" data-i18n="partners.meta3">شريك</div>
+            <div class="font-semibold" data-i18n="partners.title3">اسم الشريك الثالث</div>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-[var(--muted2)] line-clamp-3" data-i18n="partners.ex3">
+          هذا القسم جاهز لتعبئته بأسماء شعارات أو تفاصيل شركائكم الحقيقيين عندما تكون جاهزة.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-6 text-xs text-[var(--muted)]" data-i18n="partners.note"></p>
+  </div>
+</section>
+<!-- ===== FOOTER ===== -->
+<footer class="border-t border-[var(--border)]/70">
+<div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-sm text-[var(--muted)]">
+<div class="flex items-center gap-2">
+<span class="inline-flex h-6 w-6 items-center justify-center rounded-xl bg-white/5 border border-[var(--border)] overflow-hidden">
+<img alt="Aqua.Tech logo" class="h-6 w-6 object-contain" src="logoo.jpeg" loading="lazy" decoding="async"/>
+</span>
+<div>© <span id="y"></span> <span data-i18n="footer.rights">Aqua.Tech . جميع الحقوق محفوظة.</span></div>
+</div>
+
+</div>
+</footer>
+</main>
+<script>
+    // ====== CONFIG (Your contacts) ======
+    const WHATSAPP_NUMBER = "962781662869"; // digits only (no +)
+    const CONTACT_EMAIL = "aquatechqat@gmail.com";
+    // Where to save leads.
+    // Static site? Use Google Sheets Web App URL (Apps Script) here.
+    // To disable saving, set this to "".
+    const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbw92IwcTt7XEMMR8WSNRXUyJGG9Nzxyiq8DPhbGQY-hIbp4hgd1A10XK-1fDSXJ8tGeTQ/exec"; // paste your Apps Script Web App URL (ends with /exec)
+    const GOOGLE_SHEETS_TOKEN = "aquatech-2026";      // optional: set the same token in Apps Script
+    const LEADS_ENDPOINT = (function(){
+      if(!GOOGLE_SHEETS_WEBAPP_URL) return "";
+      try{
+        const u = new URL(GOOGLE_SHEETS_WEBAPP_URL);
+        if(GOOGLE_SHEETS_TOKEN) u.searchParams.set("token", GOOGLE_SHEETS_TOKEN);
+        return u.toString();
+      }catch(e){
+        return "";
+      }
+    })();
+    const INSTAGRAM_URL = "https://www.instagram.com/aqua.tech.t/";
+    const FACEBOOK_URL = "https://web.facebook.com/aqua.tech.t";
+    const LINKEDIN_URL = "https://www.linkedin.com/in/aqua-tech-/";
+    const GITHUB_URL = "https://github.com/aqua-tech-t";
+
+
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Set WhatsApp/Email links in one place
+    const WA_BASE_URL = `https://api.whatsapp.com/send/?phone=${WHATSAPP_NUMBER}&text&type=phone_number&app_absent=0`;
+    const waUrl = WA_BASE_URL;
+    const waHeader = document.getElementById("waLinkHeader");
+    const waContact = document.getElementById("waLinkContact");
+    const waMobile  = document.getElementById("waLinkMobile");
+    if(waHeader) waHeader.href = waUrl;
+    if(waContact) waContact.href = waUrl;
+    if(waMobile)  waMobile.href = waUrl;
+
+    const emailLink = document.getElementById("emailLink");
+    const emailDisplay = document.getElementById("emailDisplay");
+    if(emailLink) emailLink.href = `mailto:${CONTACT_EMAIL}`;
+    if(emailDisplay) emailDisplay.textContent = CONTACT_EMAIL;
+
+    // Social links
+    const setHref = (id, url) => {
+      const el = document.getElementById(id);
+      if(el) el.href = url;
+    };
+
+    setHref("socialWA", waUrl);
+    setHref("socialEmail", `mailto:${CONTACT_EMAIL}`);
+    setHref("socialIG", INSTAGRAM_URL);
+    setHref("socialFB", FACEBOOK_URL);
+    setHref("socialLI", LINKEDIN_URL);
+    setHref("socialGH", GITHUB_URL);
+
+
+    
+    // ===== Service CTA: scroll to contact + auto-fill service =====
+    const SERVICE_INDEX = { apps: 0, web: 1, custom: 2, design: 3, motion: 4, social: 5 };
+
+    function scrollToContactWithOffset(){
+          const contact = document.getElementById("contact");
+          if(!contact) return;
+    
+          const header = document.querySelector("header");
+          const offset = (header ? header.offsetHeight : 0) + 16;
+    
+          const top = contact.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+    
+        function prefillService(serviceKey){
+          const select = document.getElementById("fService");
+          const details = document.getElementById("fDetails");
+          const name = document.getElementById("fName");
+    
+          if(select && SERVICE_INDEX[serviceKey] !== undefined){
+            select.selectedIndex = SERVICE_INDEX[serviceKey];
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+    
+          if(details && select){
+            const label = (select.options[select.selectedIndex]?.textContent || "").trim();
+            const prefix = (currentLang === "ar") ? "أرغب بخدمة:" : "I'm interested in:";
+            const line = `${prefix} ${label}`.trim();
+            const existing = (details.value || "").trim();
+    
+            if(!existing){
+              details.value = line + "\n";
+            } else if(existing.startsWith(prefix)){
+              const parts = existing.split("\n");
+              parts[0] = line;
+              details.value = parts.join("\n");
+            } else {
+              details.value = line + "\n" + existing;
+            }
+          }
+    
+          // focus without jumping
+          setTimeout(()=>{ try{ name?.focus({ preventScroll: true }); } catch(e){ name?.focus(); } }, 350);
+        }
+    
+        function bindServiceCtas(){
+          document.querySelectorAll(".js-service-cta").forEach((a)=>{
+            a.addEventListener("click", (e)=>{
+              e.preventDefault();
+              const service = a.getAttribute("data-service") || "";
+              scrollToContactWithOffset();
+              prefillService(service);
+              try { history.replaceState(null, "", "#contact"); } catch(e) {}
+            });
+          });
+        }
+    
+        bindServiceCtas();
+// ===== i18n =====
+    const I18N = {
+      ar: {
+        pageTitle: "Aqua.Tech",
+        metaDesc: "Aqua.Tech  شركة برمجيات تقدّم تطوير تطبيقات ومواقع وحلول مخصصة مع تصميم وموشن جرافيك وإدارة سوشال ميديا.",
+        "brand.sub":"",
+
+        "nav.services":"الخدمات",
+        "nav.projects":"المشاريع",
+        "nav.process":"طريقة العمل",
+        "nav.faq":"الأسئلة",
+        "nav.contact":"تواصل",
+        "nav.why":"ليش نحن",
+        "nav.about":"من نحن",
+
+        
+        "nav.team":"فريقنا",
+        "nav.partners":"شركاؤنا",
+"btn.whatsapp":"واتساب",
+        "btn.quote":"اطلب عرض سعر",
+        "btn.call":"احجز مكالمة مجانية",
+        "btn.viewServices":"شوف خدماتنا",
+
+        "hero.badge":"حلول رقمية سلسة — من الفكرة للإطلاق",
+        "hero.h1a":"نطور مواقع وتطبيقات",
+        "hero.h1b":"تساعد شركتك تكبر وتبيع أكثر",
+        "hero.desc":"Aqua.Tech نساعد الشركات ورواد الأعمال في بناء مواقع إلكترونية وتطبيقات وحلول رقمية احترافية، من الفكرة إلى الإطلاق، بطريقة واضحة وسريعة ومناسبة للنمو.",
+        "hero.ctaPrimary":"احجز استشارة مجانية",
+        "hero.ctaSecondary":"شوف خدماتنا",
+        "stats.fastT":"سريع","stats.fastD":"تنفيذ منظم",
+        "stats.clearT":"واضح","stats.clearD":"تواصل شفاف",
+        "stats.qualityT":"مضمون","stats.qualityD":"جودة + دعم",
+
+        "hero.cardLabel":"خدماتنا الأساسية",
+        "hero.cardTitle":"حزمة متكاملة لنموك الرقمي",
+        "mini.apps":"iOS / Android",
+        "mini.webs":"مواقع + متاجر",
+        "mini.custom":"أنظمة وأتمتة",
+        "mini.design":"UI/UX + هوية",
+
+        "hero.readyT":"جاهز نبدأ؟",
+        "hero.readyD":"احكيلنا عن مشروعك وبنرجعلك بخطة ونطاق عمل واضح.",
+        "hero.readyCta":"اكتب تفاصيل مشروعك →",
+
+        "services.h":"الخدمات",
+        "services.sub":"اختار خدمة واحدة أو خذ باكيدج كامل… إحنا بنغطي كل الرحلة.",
+        "services.cta":"اطلب عرض سعر سريع",
+        "services.more":" الخدمات",
+
+        "details.h":" الخدمات",
+        "details.sub":"",
+        "details.allCta":"اطلب استشارة مجانية",
+        "details.cta":"اطلب هذه الخدمة →",
+
+        "details.apps.kicker":"تطبيقات الهاتف المحمول",
+        "details.apps.t":"تطوير تطبيقات الهاتف المحمول",
+        "details.apps.d":"نبني تطبيقات سريعة وآمنة بتجربة مستخدم ممتازة—من فكرة MVP إلى تطبيق جاهز للنشر.",
+        "details.apps.p1":"Native (Swift / Kotlin) أو Flutter حسب احتياجك",
+        "details.apps.p2":"لوحة تحكم + APIs + إشعارات + تسجيل دخول",
+        "details.apps.p3":"تحسين أداء + اختبارات + رفع على المتاجر",
+
+        "details.web.kicker":"تطوير مواقع",
+        "details.web.t":"مواقع احترافية سريعة",
+        "details.web.d":"صفحات هبوط، مواقع شركات، متاجر، ولوحات تحكم—مهيأة للسيو وسريعة على الموبايل.",
+        "details.web.p1":"تصميم UI/UX + بناء Frontend حديث",
+        "details.web.p2":"Backend / CMS / لوحة تحكم عند الحاجة",
+        "details.web.p3":"سرعة + سيو + تتبع وتحليلات",
+
+        "details.custom.kicker":"برمجيات مخصصة",
+        "details.custom.t":"أنظمة ولوحات تحكم على مقاس عملك",
+        "details.custom.d":"نبني أنظمة داخلية، أتمتة، تكاملات وربط APIs لتسهيل عملياتك وتقليل الوقت والتكلفة.",
+        "details.custom.p1":"تحليل احتياج + تصميم قاعدة بيانات + صلاحيات",
+        "details.custom.p2":"تكاملات: Payments / CRM / WhatsApp / وغيرها",
+        "details.custom.p3":"تقارير + مراقبة + دعم وصيانة",
+
+        "details.design.kicker":"تصميم",
+        "details.design.t":"UI/UX + هوية بصرية",
+        "details.design.d":"نصمم واجهات وتجربة مستخدم مريحة، مع هوية بصرية تعكس اسم Aqua.Tech وتزيد الثقة.",
+        "details.design.p1":"Wireframes + UI Kit + Design System",
+        "details.design.p2":"Branding: Logo use + ألوان + خطوط",
+        "details.design.p3":"تصاميم سوشال + مواد تسويقية",
+
+        "details.motion.kicker":"موشن جرافيك",
+        "details.motion.t":"فيديوهات قصيرة تزيد التحويل",
+        "details.motion.d":"موشن ريلز وإعلانات وفيديوهات تعريفية… نص واضح + سيناريو + مونتاج يعبر عن منتجك.",
+        "details.motion.p1":"Script + Storyboard + Style Frames",
+        "details.motion.p2":"Animation + Sound + Subtitles",
+        "details.motion.p3":"نسخ متعددة للمقاسات (Reels / Stories / Ads)",
+
+        "details.social.kicker":"إدارة سوشال ميديا",
+        "details.social.t":"نخلي حضورك قوي ومستمر",
+        "details.social.d":"خطة محتوى، تصميم بوستات، جدولة، وإدارة الرسائل—مع تقارير وتحسين شهري.",
+        "details.social.p1":"Content Plan + Calendar + Copywriting",
+        "details.social.p2":"Design + Reels + Brand consistency",
+        "details.social.p3":"Analytics + تحسين النتائج (Reach/Leads)",
+
+        "svc.appsT":"تطوير تطبيقات",
+        "svc.appsD":"تطبيقات iOS/Android بأداء عالي وتجربة مستخدم ممتازة—من MVP لمنتج كامل.",
+        "svc.webT":"تطوير مواقع",
+        "svc.webD":"مواقع سريعة وجميلة، صفحات هبوط، متاجر، ولوحات تحكم—جاهزة للسيو والتسويق.",
+        "svc.customT":"برمجيات مخصصة",
+        "svc.customD":"أنظمة داخلية، أتمتة، تكاملات… حلول على مقاس شغلك.",
+        "svc.designT":"تصميم",
+        "svc.designD":"UI/UX، هوية بصرية، براندنج، ديزاين سوشال… شكل احترافي يبيع.",
+        "svc.motionT":"موشن جرافيك",
+        "svc.motionD":"إعلانات قصيرة، ريلز، فيديوهات تعريفية… قصة جذابة تزيد التحويل.",
+        "svc.socialT":"إدارة سوشال ميديا",
+        "svc.socialD":"خطة محتوى، تصميم بوستات، جدولة، إدارة رسائل… حضور قوي ومستمر.",
+
+        "projects.h":"المشاريع",
+        "projects.sub":"   المشاريع التي تنجزها Aqua.Tech مع تفاصيل رائعة.",
+        "projects.cta":"كن أول عميل؟ تواصل معنا →",
+        "projects.badge":"قريبًا",
+        "projects.title":"قسم المشاريع جاهز للمستقبل",
+        "projects.desc":"أول مشروع بننزله هون رح يكون “Case Study” مرتب: هدف، تحديات، الحل، ونتائج.",
+        "projects.tipT":"ملاحظة سريعة",
+        "projects.tipD":"بإمكاننا لاحقًا إضافة صور، فلترة، وصفحات لكل مشروع.",
+        "projects.tipCta":"ابدأ مشروعك الأول →",
+
+        "why.h":"ليش تختار Aqua.Tech",
+        "why.sub":"لأننا نركز على النتيجة، مش فقط الشكل — تنفيذ منظم، تواصل واضح، وحلول مناسبة لاحتياجك.",
+        "why.c1t":"تنفيذ واضح",
+        "why.c1d":"خطة عمل واضحة من البداية حتى التسليم.",
+        "why.c2t":"حلول مخصصة",
+        "why.c2d":"نطوّر حسب احتياج مشروعك، مش قوالب جاهزة فقط.",
+        "why.c3t":"تواصل سريع",
+        "why.c3d":"متابعة واضحة وتحديثات مستمرة أثناء التنفيذ.",
+        "why.c4t":"دعم بعد التسليم",
+        "why.c4d":"نظل معك بعد الإطلاق للتحسين والدعم عند الحاجة.",
+        "about.h":"من نحن",
+        "about.d":"Aqua.Tech فريق متخصص في تطوير المواقع والتطبيقات والحلول الرقمية الحديثة. نعمل على مساعدة الشركات ورواد الأعمال في بناء حضور رقمي قوي من خلال حلول احترافية، واضحة، وقابلة للنمو.",
+        "process.h":"طريقة العمل",
+        "process.sub":"",
+        "process.s1t":"اكتشاف","process.s1d":"نفهم الهدف والجمهور ونحدد النطاق والتوقيت.",
+        "process.s2t":"تصميم","process.s2d":"تجربة مستخدم + واجهات متناسقة مع الهوية.",
+        "process.s3t":"تطوير","process.s3d":"بناء المنتج واختبارات جودة وأداء.",
+        "process.s4t":"إطلاق ودعم","process.s4d":"إطلاق + تحسينات + صيانة حسب الحاجة.",
+        "process.cta":"اطلب خطة تنفيذ",
+        "process.s1b1":"جلسة اكتشاف سريعة + تحديد نطاق",
+        "process.s1b2":"تقدير وقت وتكلفة بشكل واضح",
+        "process.s1b3":"اقتراح تقنيات مناسبة للمشروع",
+        "process.s2b1":"Wireframes + UI Kit",
+        "process.s2b2":"تصميم متجاوب Mobile-first",
+        "process.s2b3":"تجربة مستخدم سلسة وواضحة",
+        "process.s3b1":"تطوير Frontend + Backend عند الحاجة",
+        "process.s3b2":"اختبارات + تحسين أداء",
+        "process.s3b3":"تسليم نسخة تجريبية للتقييم",
+        "process.s4b1":"نشر على الاستضافة/المتاجر",
+        "process.s4b2":"مراقبة وتحسين مستمر",
+        "process.s4b3":"صيانة ودعم حسب الاتفاق",
+
+        "faq.h":"أسئلة متكررة",
+        "faq.q1":"كم يستغرق تنفيذ موقع أو تطبيق؟",
+        "faq.a1":"حسب حجم العمل. بعد تحديد المتطلبات نرسل جدولًا زمنيًا واضحًا.",
+        "faq.q2":"كيف يتم حساب سعر المشروع؟",
+        "faq.a2":"بناءً على النطاق والميزات والتقنيات. تحصل على عرض سعر مفصل بالمراحل والتسليمات.",
+        "faq.q3":"هل تقدمون تطويرًا مخصصًا بالكامل؟",
+        "faq.a3":"نعم، نبني حلولًا على مقاس احتياجك مع إمكانية الربط والتكامل عبر APIs.",
+        "faq.q4":"هل توفرون ERP؟",
+        "faq.a4":"نعم، من التحليل والتخصيص والتكامل حتى التدريب والدعم المستمر.",
+
+        "contact.h":" تواصل معنا",
+        "contact.sub":"اكتب تفاصيل مشروعك، وبنرجعلك بأقرب وقت بخطة ونطاق عمل واضح.",
+        "contact.wa":"واتساب",
+        "contact.waAction":"محادثة على الواتساب",
+        "contact.email":"إيميل",
+                "contact.emailAction":"راسلنا عبر الإيميل",
+        "contact.social":"حسابات التواصل",
+        "contact.loc":"الموقع",
+        "contact.locV":"عمّان، الأردن",
+
+        "form.name":"الاسم",
+        "form.contact":"رقم/إيميل",
+        "form.contactLabel":"رقم واتساب أو الإيميل",
+        "form.contactPh":"07XXXXXXXX أو example@mail.com",
+        "form.service":"الخدمة المطلوبة",
+        "form.budget":"الميزانية التقريبية",
+        "form.budgetPlaceholder":"اختر الميزانية",
+        "form.budgetOpt1":"أقل من 500 د.أ",
+        "form.budgetOpt2":"500 - 1500 د.أ",
+        "form.budgetOpt3":"1500 - 3000 د.أ",
+        "form.budgetOpt4":"3000+ د.أ",
+        "form.timeline":"موعد التنفيذ",
+        "form.timelinePlaceholder":"اختر الموعد",
+        "form.timelineOpt1":"بأسرع وقت",
+        "form.timelineOpt2":"خلال أسبوعين",
+        "form.timelineOpt3":"خلال شهر",
+        "form.timelineOpt4":"ما زلت أستكشف",
+        "form.namePh":"اسمك",
+        "form.detailsPh":"اكتب الهدف، المميزات، والموعد المتوقع…",
+        "form.sendQuote":"احصل على عرض سعر",
+        "form.replyNote":"نرد عادة خلال 24 ساعة بخطة واضحة ونطاق عمل مبدئي.",
+        "form.details":" المشروع",
+        "form.opt1":"تطوير تطبيق",
+        "form.opt2":"تطوير موقع",
+        "form.opt3":"برمجيات مخصصة",
+        "form.opt4":"تصميم",
+        "form.opt5":"موشن جرافيك",
+        "form.opt6":"إدارة سوشال ميديا",
+        "form.sendWA":"إرسال عبر واتساب",
+        "form.sendEmail":"إرسال عبر الإيميل",
+        "form.sendLead":"إرسال الطلب",
+        "team.h":"فريقنا",
+        "team.sub":"   الفريق الذي يصنع حلول Aqua.Tech — مهارات متعددة، جودة عالية، وتعاون مستمر.",
+        "team.badge":"قريبًا",
+        "team.role1":"الدور",
+        "team.name1":"عضو فريق (قريبًا)",
+        "team.bio1":"سنضيف هنا وصفًا مختصرًا عن الخبرة والمسؤوليات وروابط التواصل عند توفر فريق العمل.",
+        "team.role2":"الدور",
+        "team.name2":"عضو فريق (قريبًا)",
+        "team.bio2":"يمكن لاحقًا إضافة صورة شخصية، مهارات، وروابط LinkedIn لكل عضو بسهولة.",
+        "team.role3":"الدور",
+        "team.name3":"عضو فريق (قريبًا)",
+        "team.bio3":"هذا القسم مُجهّز للمستقبل — فقط انسخ بطاقة وبدّل النصوص والصورة.",
+
+        "partners.h":"شركاؤنا",
+        "partners.sub":"نفخر بالتعاون مع شركاء وجهات نعمل معها لبناء حلول رقمية موثوقة وفعالة.",
+        "partners.meta1":"شريك",
+        "partners.title1":"اسم الشريك الأول",
+        "partners.ex1":"أضف هنا وصفًا مختصرًا لطبيعة الشراكة أو نوع الخدمات التي تم تنفيذها مع هذا الشريك.",
+        "partners.meta2":"شريك",
+        "partners.title2":"اسم الشريك الثاني",
+        "partners.ex2":"يمكنك لاحقًا وضع نبذة قصيرة عن القطاع أو المشروع المشترك أو القيمة التي أضفناها معًا.",
+        "partners.meta3":"شريك",
+        "partners.title3":"اسم الشريك الثالث",
+        "partners.ex3":"هذا القسم جاهز لتعبئته بأسماء شعارات أو تفاصيل شركائكم الحقيقيين عندما تكون جاهزة.",
+        "partners.note":"",
+        "footer.rights":"Aqua.Tech . جميع الحقوق محفوظة.",
+        "floating.contact":"تواصل سريع",
+
+        "ph.t1":"تجريبي","ph.h1":"Case Study — مشروعك الأول","ph.d1":"ملخص + الهدف + الحل + النتيجة (عند توفر مشاريع).",
+        "ph.t2":"تجريبي","ph.h2":"Mobile App — قريبًا","ph.d2":"لقطات شاشة + تقنيات + مميزات مختصرة.",
+        "ph.t3":"تجريبي","ph.h3":"Custom System — قريبًا","ph.d3":"المشكلة التي حلّها النظام + النتائج.",
+        "projects.meta1":"مشروع",
+        "projects.title1":"مشروع (قريبًا)",
+        "projects.desc1":"بطاقة جاهزة للمستقبل — انسخها وبدّل الاسم والوصف والرابط عندما يصبح لديك مشروع.",
+        "projects.meta2":"مشروع",
+        "projects.title2":"مشروع (قريبًا)",
+        "projects.desc2":"لاحقًا يمكنك إضافة صورة/لقطات شاشة وتقنيات مستخدمة ونتائج مختصرة.",
+        "projects.meta3":"مشروع",
+        "projects.title3":"مشروع (قريبًا)",
+        "projects.desc3":"اترك هذه البطاقات فارغة الآن — واستبدلها لاحقًا بمشاريعك الحقيقية بسهولة.",
+        "projects.note":"",
+        "faq.sub":" ",
+        "faq.q5":"هل توفرون الاستضافة والدومين ورفع الموقع؟",
+        "faq.a5":"نعم عند الطلب، مع SSL ورفع الموقع وإعدادات تشغيل أساسية.",
+        "faq.q6":"هل توجد صيانة بعد التسليم؟",
+        "faq.a6":"نعم، باقات دعم وتحديثات أمنية وتحسينات أداء حسب الحاجة.",
+        "faq.q7":"هل تسلمون الكود وملفات التصميم؟",
+        "faq.a7":"نعم، تسليم منظم (كود + تصميم) مع شرح تشغيل واضح.",
+        "faq.q8":"كيف تكون المتابعة أثناء التنفيذ؟",
+        "faq.a8":"نتفق على قناة تواصل وتحديثات حسب المراحل مع توثيق أي تغيير.",
+        "faq.q9":"هل تقدمون تصميم وهوية وموشن وسوشال؟",
+        "faq.a9":"نعم، UI/UX وهوية بصرية وموشن وإدارة سوشال ضمن باقات.",
+        "faq.q10":"هل يمكن توقيع NDA وحماية البيانات؟",
+        "faq.a10":"نعم، يمكن توقيع NDA ونتبع ممارسات أمان لحماية البيانات أثناء التطوير.",
+
+        msg: {
+          subject: "طلب جديد من موقع Aqua.Tech",
+          name: "الاسم",
+          contact: "رقم/إيميل",
+          service: "الخدمة",
+          budget: "الميزانية التقريبية",
+          timeline: "موعد التنفيذ",
+          details: "تفاصيل",
+          statusNeed: "اكتب اسمك + تفاصيل سريعة عن المشروع.",
+          statusWA: "تم فتح واتساب برسالة جاهزة ✅",
+          statusEmail: "تم فتح البريد برسالة جاهزة ✅",
+          statusSending: "جاري إرسال الطلب…",
+          statusSent: "تم إرسال طلبك بنجاح ✅",
+          statusFail: "تعذر الإرسال. جرّب مرة ثانية.",
+          statusConfig: "يرجى ضبط رابط Google Sheets داخل إعدادات الصفحة أولاً."
+        }
+      },
+
+      en: {
+        pageTitle: "Aqua.Tech",
+        metaDesc: "Aqua.Tech builds apps, websites, and custom software with design, motion graphics, and social media management.",
+        "brand.sub":" ",
+
+        "nav.services":"Services",
+        "nav.projects":"Projects",
+        "nav.process":"Process",
+        "nav.faq":"FAQ",
+        "nav.contact":"Contact",
+        "nav.why":"Why us",
+        "nav.about":"About",
+
+        
+        "nav.team":"Our Team",
+        "nav.partners":"Partners",
+"btn.whatsapp":"WhatsApp",
+        "btn.quote":"Get a Quote",
+        "btn.call":"Book a Free Call",
+        "btn.viewServices":"View Services",
+
+        "hero.badge":"Smooth digital solutions — from idea to launch",
+        "hero.h1a":"We build websites and apps",
+        "hero.h1b":"that help your business grow",
+        "hero.desc":"Aqua.Tech helps companies and founders build professional websites, apps, and digital solutions — from idea to launch — with a clear process built for growth.",
+        "hero.ctaPrimary":"Book a free consultation",
+        "hero.ctaSecondary":"View services",
+        "stats.fastT":"Fast","stats.fastD":"Structured delivery",
+        "stats.clearT":"Clear","stats.clearD":"Open Dialogue",
+        "stats.qualityT":"Reliable","stats.qualityD":"Quality + support",
+
+        "hero.cardLabel":"Core services",
+        "hero.cardTitle":"All-in-one growth package",
+        "mini.apps":"iOS / Android",
+        "mini.webs":"Websites + Stores",
+        "mini.custom":"Systems & Automation",
+        "mini.design":"UI/UX + Branding",
+
+        "hero.readyT":"Ready to start?",
+        "hero.readyD":"Tell us about your project and we’ll reply with a clear scope and plan.",
+        "hero.readyCta":"Share your project details →",
+
+        "services.h":"Services",
+        "services.sub":"Pick one service or a full package — we cover the entire journey.",
+        "services.cta":"Request a quick quote",
+        "services.more":"Services",
+
+        "details.h":"Services",
+        "details.sub":"",
+        "details.allCta":"Request a free consultation",
+        "details.cta":"Request this service →",
+
+        "details.apps.kicker":"Mobile apps",
+        "details.apps.t":"Mobile app development",
+        "details.apps.d":"Fast, secure apps with great UX—from MVP to a store-ready product.",
+        "details.apps.p1":"Native (Swift/Kotlin) or Flutter—based on your needs",
+        "details.apps.p2":"Admin panel + APIs + notifications + authentication",
+        "details.apps.p3":"Performance tuning + testing + store publishing",
+
+        "details.web.kicker":"Web development",
+        "details.web.t":"Fast, professional websites",
+        "details.web.d":"Landing pages, company sites, stores, and dashboards—SEO-ready and mobile-first.",
+        "details.web.p1":"UI/UX design + modern frontend build",
+        "details.web.p2":"Backend / CMS / dashboard when needed",
+        "details.web.p3":"Speed + SEO + analytics tracking",
+
+        "details.custom.kicker":"Custom software",
+        "details.custom.t":"Systems & dashboards tailored to you",
+        "details.custom.d":"Internal systems, automation, and API integrations to save time and cost.",
+        "details.custom.p1":"Requirements + database design + roles/permissions",
+        "details.custom.p2":"Integrations: Payments / CRM / WhatsApp / more",
+        "details.custom.p3":"Reports + monitoring + support & maintenance",
+
+        "details.design.kicker":"Design",
+        "details.design.t":"UI/UX + visual identity",
+        "details.design.d":"Comfortable, modern interfaces with a brand identity that builds trust.",
+        "details.design.p1":"Wireframes + UI kit + design system",
+        "details.design.p2":"Branding: logo usage + colors + typography",
+        "details.design.p3":"Social designs + marketing assets",
+
+        "details.motion.kicker":"Motion graphics",
+        "details.motion.t":"Short videos that convert",
+        "details.motion.d":"Reels, ads, and explainers—clear script, storyboard, and a polished edit.",
+        "details.motion.p1":"Script + storyboard + style frames",
+        "details.motion.p2":"Animation + sound + subtitles",
+        "details.motion.p3":"Multiple sizes (Reels / Stories / Ads)",
+
+        "details.social.kicker":"Social media management",
+        "details.social.t":"A strong, consistent presence",
+        "details.social.d":"Content plan, post design, scheduling, and inbox management—with monthly optimization.",
+        "details.social.p1":"Content plan + calendar + copywriting",
+        "details.social.p2":"Design + reels + brand consistency",
+        "details.social.p3":"Analytics + improving results (Reach/Leads)",
+
+        "svc.appsT":"App Development",
+        "svc.appsD":"High-performance iOS/Android apps with great UX — from MVP to full product.",
+        "svc.webT":"Web Development",
+        "svc.webD":"Fast modern websites, landing pages, stores, and dashboards — SEO-ready.",
+        "svc.customT":"Custom Software",
+        "svc.customD":"Internal systems, automation, integrations — tailored to your business.",
+        "svc.designT":"Design",
+        "svc.designD":"UI/UX, branding, and social design — visuals that sell.",
+        "svc.motionT":"Motion Graphics",
+        "svc.motionD":"Short ads, reels, explainers — storytelling that converts.",
+        "svc.socialT":"Social Media Management",
+        "svc.socialD":"Content planning, design, scheduling — consistent presence.",
+
+        "projects.h":"Projects",
+        "projects.sub":"Aqua.Tech work here with polished details.",
+        "projects.cta":"Be our first client? Contact us →",
+        "projects.badge":"Coming Soon",
+        "projects.title":"Projects section is future-ready",
+        "projects.desc":"Your first project will appear here as a clean case study: goals, challenges, solution, results.",
+        "projects.tipT":"Quick note",
+        "projects.tipD":"Later we can add screenshots, filters, and dedicated project pages.",
+        "projects.tipCta":"Start your first project →",
+
+        "why.h":"Why choose Aqua.Tech",
+        "why.sub":"Because we focus on outcomes, not just visuals — structured delivery, clear communication, and solutions tailored to your business.",
+        "why.c1t":"Clear execution",
+        "why.c1d":"A structured plan from kickoff to delivery.",
+        "why.c2t":"Tailored solutions",
+        "why.c2d":"Built around your needs, not forced into generic templates.",
+        "why.c3t":"Fast communication",
+        "why.c3d":"Consistent updates and direct follow-up throughout delivery.",
+        "why.c4t":"Post-launch support",
+        "why.c4d":"We stay with you after launch for improvements and support.",
+        "about.h":"About us",
+        "about.d":"Aqua.Tech is a digital product team focused on modern websites, mobile apps, and tailored software solutions. We help companies and founders build a strong digital presence through solutions that are polished, practical, and scalable.",
+        "process.h":"Process",
+        "process.sub":"",
+        "process.s1t":"Discovery","process.s1d":"Understand goals, audience, scope, and timeline.",
+        "process.s2t":"Design","process.s2d":"UX + UI aligned with your brand.",
+        "process.s3t":"Development","process.s3d":"Build, test, and optimize performance.",
+        "process.s4t":"Launch & Support","process.s4d":"Deploy, improve, and maintain as needed.",
+        "process.cta":"Request a delivery plan",
+        "process.s1b1":"Quick discovery call + scope definition",
+        "process.s1b2":"Clear timeline & budget estimate",
+        "process.s1b3":"Recommend the right tech stack",
+        "process.s2b1":"Wireframes + UI kit",
+        "process.s2b2":"Responsive, mobile-first design",
+        "process.s2b3":"Smooth, clear user flows",
+        "process.s3b1":"Frontend + backend when needed",
+        "process.s3b2":"Testing + performance optimization",
+        "process.s3b3":"Deliver a reviewable staging build",
+        "process.s4b1":"Deploy to hosting / app stores",
+        "process.s4b2":"Monitor & iterate",
+        "process.s4b3":"Maintenance & support as agreed",
+
+        "faq.h":"FAQ",
+        "faq.q1":"How long does a website or app take?",
+        "faq.a1":"It depends on scope. Once requirements are clear, we share a clear timeline.",
+        "faq.q2":"How do you price a project?",
+        "faq.a2":"Based on scope, features, tech, and timeline. You get a detailed quote with milestones and deliverables.",
+        "faq.q3":"Do you build fully custom solutions?",
+        "faq.a3":"Yes—tailored to your needs, with integrations via APIs when needed.",
+        "faq.q4":"Do you provide ERP?",
+        "faq.a4":"Yes—from analysis and customization to integrations, training, and ongoing support.",
+
+        "contact.h":"Contact",
+        "contact.sub":"Share your project details and we’ll reply with a clear scope and plan.",
+        "contact.wa":"WhatsApp",
+        "contact.waAction":"Chat on WhatsApp",
+        "contact.email":"Email",
+                "contact.emailAction":"Email us",
+        "contact.social":"Social links",
+        "contact.loc":"Location",
+        "contact.locV":"Amman, Jordan",
+
+        "form.name":"Name",
+        "form.contact":"Phone/Email",
+        "form.contactLabel":"WhatsApp number or email",
+        "form.contactPh":"07XXXXXXXX or example@mail.com",
+        "form.service":"Requested service",
+        "form.budget":"Estimated budget",
+        "form.budgetPlaceholder":"Select budget",
+        "form.budgetOpt1":"Under 500 JOD",
+        "form.budgetOpt2":"500 - 1500 JOD",
+        "form.budgetOpt3":"1500 - 3000 JOD",
+        "form.budgetOpt4":"3000+ JOD",
+        "form.timeline":"Timeline",
+        "form.timelinePlaceholder":"Select timeline",
+        "form.timelineOpt1":"As soon as possible",
+        "form.timelineOpt2":"Within two weeks",
+        "form.timelineOpt3":"Within one month",
+        "form.timelineOpt4":"I am still exploring",
+        "form.details":"Project details",
+        "form.namePh":"Your name",
+        "form.detailsPh":"Write goals, key features, and timeline…",
+        "form.sendQuote":"Get a quote",
+        "form.replyNote":"We usually reply within 24 hours with a clear initial scope and plan.",
+        "form.opt1":"App Development",
+        "form.opt2":"Web Development",
+        "form.opt3":"Custom Software",
+        "form.opt4":"Design",
+        "form.opt5":"Motion Graphics",
+        "form.opt6":"Social Media Management",
+        "form.sendWA":"Send via WhatsApp",
+        "form.sendEmail":"Send via Email",
+        "form.sendLead":"Submit request",
+        "team.h":"Our Team",
+        "team.sub":"The people behind Aqua.Tech — diverse skills, high quality, and true collaboration.",
+        "team.badge":"Coming soon",
+        "team.role1":"Role",
+        "team.name1":"Team member (coming soon)",
+        "team.bio1":"A short bio about experience, responsibilities, and contact links will appear here once the team is ready.",
+        "team.role2":"Role",
+        "team.name2":"Team member (coming soon)",
+        "team.bio2":"Later we can easily add a profile photo, skills, and LinkedIn links for each member.",
+        "team.role3":"Role",
+        "team.name3":"Team member (coming soon)",
+        "team.bio3":"This section is future-ready — just duplicate a card and update the text and photo.",
+
+        "news.h":"Latest News",
+        "news.sub":"Technical and scientific articles where we share our experience and the latest ideas ",
+        "news.badge":"Fresh content",
+        "news.meta1":"Article • Coming soon",
+        "news.title1":"First article title",
+        "news.ex1":"A short intro will appear here — you can link to the full article or an internal page later.",
+        "news.meta2":"Article • Coming soon",
+        "news.title2":"Best practices for building systems",
+        "news.ex2":"Topics like performance, security, scalability, and data management — explained simply and clearly.",
+        "news.meta3":"Article • Coming soon",
+        "news.title3":"Digital transformation, step by step",
+        "news.ex3":"How we plan and deliver digital transformation in organizations with tools like ERP, and modern integrations.",
+        "news.note":"",
+
+        "partners.h":"Our Partners",
+        "partners.sub":"We are proud to work with partners and organizations to deliver reliable and effective digital solutions.",
+        "partners.badge":"Trusted partnerships",
+        "partners.meta1":"Partner",
+        "partners.title1":"First partner name",
+        "partners.ex1":"Add a short description here about the partnership or the type of work delivered with this partner.",
+        "partners.meta2":"Partner",
+        "partners.title2":"Second partner name",
+        "partners.ex2":"Later, you can add a short note about the sector, joint project, or value we created together.",
+        "partners.meta3":"Partner",
+        "partners.title3":"Third partner name",
+        "partners.ex3":"This section is ready to be filled with your real partners, logos, or collaboration details when available.",
+        "partners.note":"",
+        "footer.rights":"Aqua.Tech. All rights reserved.",
+        "floating.contact":"Quick contact",
+
+        "ph.t1":"Placeholder","ph.h1":"Case Study — Your first project","ph.d1":"Summary + goal + solution + outcome (once projects exist).",
+        "ph.t2":"Placeholder","ph.h2":"Mobile App — coming soon","ph.d2":"Screenshots + tech + key highlights.",
+        "ph.t3":"Placeholder","ph.h3":"Custom System — coming soon","ph.d3":"Problem solved + results.",
+        "projects.meta1":"Project",
+        "projects.title1":"Project (coming soon)",
+        "projects.desc1":"Future-ready card — duplicate it and update name, description, and link once you have projects.",
+        "projects.meta2":"Project",
+        "projects.title2":"Project (coming soon)",
+        "projects.desc2":"Later you can add screenshots, tech stack, and short outcomes.",
+        "projects.meta3":"Project",
+        "projects.title3":"Project (coming soon)",
+        "projects.desc3":"Keep these cards empty for now — replace them later with your real projects easily.",
+        "projects.note":"",
+        "faq.sub":"",
+        "faq.q5":"Do you handle hosting, domain, and deployment?",
+        "faq.a5":"Yes on request, including SSL, deployment, and basic setup.",
+        "faq.q6":"Do you offer maintenance after delivery?",
+        "faq.a6":"Yes—support plans, security updates, and performance improvements as needed.",
+        "faq.q7":"Can you deliver the source code and design files?",
+        "faq.a7":"Yes—organized handover (code + design) with clear run instructions.",
+        "faq.q8":"How do we communicate during development?",
+        "faq.a8":"We agree on a channel and update cadence, and document any changes.",
+        "faq.q9":"Do you offer design, branding, motion, and social?",
+        "faq.a9":"Yes—UI/UX, visual identity, motion graphics, and social media packages.",
+        "faq.q10":"Can we sign an NDA and protect data?",
+        "faq.a10":"Yes—we can sign an NDA and follow secure development practices.",
+
+        msg: {
+          subject: "New request from Aqua.Tech website",
+          name: "Name",
+          contact: "Contact",
+          service: "Service",
+          budget: "Estimated budget",
+          timeline: "Timeline",
+          details: "Details",
+          statusNeed: "Please enter your name + a quick project summary.",
+          statusWA: "WhatsApp opened with a ready message ✅",
+          statusEmail: "Email opened with a ready message ✅",
+          statusSending: "Sending your request…",
+          statusSent: "Request sent successfully ✅",
+          statusFail: "Could not send. Please try again.",
+          statusConfig: "Please set the Google Sheets Web App URL in the page config first."
+        }
+      }
+    };
+
+    let currentLang = "ar";
+
+    function applyI18n(lang){
+      const dict = I18N[lang] || I18N.ar;
+
+      document.title = dict.pageTitle;
+      const meta = document.getElementById("metaDesc");
+      if(meta) meta.setAttribute("content", dict.metaDesc);
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+
+      const toggle = document.getElementById("langToggle");
+      if(toggle){
+        toggle.querySelector("span").textContent = (lang === "ar") ? "EN" : "AR";
+      }
+
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key] !== undefined) el.textContent = dict[key];
+      });
+
+      // placeholders
+      document.querySelectorAll("[data-ph-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-ph-i18n");
+        if(dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
+      });
+    }
+
+    function setLang(lang){
+      currentLang = lang;
+      localStorage.setItem("aqua_lang", lang);
+      applyI18n(lang);
+    }
+
+    const _langBtn = document.getElementById("langToggle");
+    if(_langBtn) _langBtn.addEventListener("click", ()=>{
+      setLang(currentLang === "ar" ? "en" : "ar");
+    });
+
+
+    // ===== Mobile menu (phones/tablets) =====
+    const menuBtn = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const iconOpen = document.getElementById("menuIconOpen");
+    const iconClose = document.getElementById("menuIconClose");
+
+    function setMenu(open){
+      if(!mobileMenu || !menuBtn) return;
+      mobileMenu.classList.toggle("hidden", !open);
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      // toggle icons
+      if(iconOpen) iconOpen.classList.toggle("hidden", open);
+      if(iconClose) iconClose.classList.toggle("hidden", !open);
+    }
+
+    if(menuBtn){
+      menuBtn.addEventListener("click", ()=>{
+        const open = mobileMenu ? mobileMenu.classList.contains("hidden") : false;
+        setMenu(open);
+      });
+    }
+
+    // Close when clicking a link
+    if(mobileMenu){
+      mobileMenu.querySelectorAll("a").forEach(a=>{
+        a.addEventListener("click", ()=> setMenu(false));
+      });
+    }
+
+    // Close when clicking outside
+    document.addEventListener("click", (e)=>{
+      if(!mobileMenu || mobileMenu.classList.contains("hidden")) return;
+      if(menuBtn && (menuBtn.contains(e.target) || mobileMenu.contains(e.target))) return;
+      setMenu(false);
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") setMenu(false);
+    });
+
+
+    
+// Load saved language if available
+(function(){
+  const savedLang = localStorage.getItem("aqua_lang");
+  currentLang = (savedLang === "en" || savedLang === "ar") ? savedLang : "ar";
+  applyI18n(currentLang);
+})();
+
+
+// ===== Form send (Google Sheets only) =====
+    const formEl = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+    const btnSend = document.getElementById("sendLead");
+
+function getFormData() {
+  return {
+    name: document.getElementById("fName")?.value?.trim() || "",
+    contact: document.getElementById("fContact")?.value?.trim() || "",
+    service: document.getElementById("fService")?.value?.trim() || "",
+    budget: document.getElementById("fBudget")?.value?.trim() || "",
+    timeline: document.getElementById("fTimeline")?.value?.trim() || "",
+    details: document.getElementById("fDetails")?.value?.trim() || ""
+  };
+}
+
+    function getLeadPayload(){
+      const d = getFormData();
+      const website = document.getElementById("fWebsite")?.value?.trim() || "";
+      return {
+        name: d.name,
+        contact: d.contact,
+        service: d.service,
+        budget: d.budget,
+        timeline: d.timeline,
+        details: d.details,
+        website,          // honeypot (should stay empty)
+        lang: currentLang,
+        page: location.href,
+        referrer: document.referrer || "",
+        ua: navigator.userAgent || "",
+        ts: new Date().toISOString()
+      };
+    }
+
+    function buildMessage(lang, data){
+      const m = (I18N[lang] || I18N.ar).msg;
+      return `${m.name}: ${data.name}
+${m.contact}: ${data.contact || "-"}
+${m.service}: ${data.service || "-"}
+${m.budget}: ${data.budget || "-"}
+${m.timeline}: ${data.timeline || "-"}
+${m.details}:
+${data.details || "-"}
+
+— Aqua.Tech`;
+    }
+
+    function setStatus(text){
+      if(!statusEl) return;
+      statusEl.textContent = text;
+    }
+
+    function setBusy(on){
+      [btnSend].forEach(b=>{
+        if(!b) return;
+        b.disabled = !!on;
+        b.classList.toggle("opacity-60", !!on);
+        b.classList.toggle("cursor-not-allowed", !!on);
+      });
+    }
+
+    async function sendLead(payload){
+      // If you don't want to save leads, set LEADS_ENDPOINT = "" in the config section.
+      if(!LEADS_ENDPOINT) return { ok:false, skipped:true };
+
+      // Honeypot: bots usually fill hidden fields. Pretend success, and don't send anything.
+      if(payload.website) return { ok:true, skipped:true };
+
+      const body = JSON.stringify(payload);
+
+      // Detect cross-origin (e.g., Google Apps Script Web App)
+      let isCrossOrigin = false;
+      let endpoint = LEADS_ENDPOINT;
+      try{
+        const u = new URL(LEADS_ENDPOINT, location.href);
+        endpoint = u.toString();
+        isCrossOrigin = (u.origin !== location.origin);
+      }catch(e){}
+
+      // Best effort: sendBeacon survives mailto/whatsapp navigation
+      try{
+        if(navigator.sendBeacon){
+          const mime = isCrossOrigin ? "text/plain;charset=utf-8" : "application/json";
+          const ok = navigator.sendBeacon(endpoint, new Blob([body], {type: mime}));
+          if(ok) return { ok:true, transport:"beacon" };
+        }
+      }catch(e){}
+
+      // Fallback
+      try{
+        if(isCrossOrigin){
+          // Use a simple request (text/plain) + no-cors to avoid CORS preflight issues.
+          await fetch(endpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body,
+            keepalive: true
+          });
+          // Response is opaque in no-cors; assume OK if request didn't throw.
+          return { ok:true, transport:"fetch-no-cors" };
+        }
+
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body,
+          keepalive: true
+        });
+        const data = await res.json().catch(()=> ({}));
+        return { ok: res.ok && (data.ok !== false), data, transport:"fetch-json" };
+      }catch(e){
+        return { ok:false, error: e };
+      }
+    }
+
+    function setFieldError(id, on){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.classList.toggle("ring-2", on);
+      el.classList.toggle("ring-red-500/40", on);
+      el.classList.toggle("border-red-500/40", on);
+    }
+
+    function validate(data){
+      // reset
+      ["fName","fContact","fDetails"].forEach(id => setFieldError(id,false));
+
+      const hasName = !!data.name;
+      const hasDetails = (data.details || "").trim().length >= 10; // تفاصيل مفهومة
+      const hasContact = !!data.contact;
+
+      if(!hasName) setFieldError("fName", true);
+      if(!hasDetails && !hasContact){
+        setFieldError("fContact", true);
+        setFieldError("fDetails", true);
+      }
+
+      return hasName && (hasDetails || hasContact);
+    }
+
+    // ✅ Submit request (store lead)
+    if(formEl){
+      formEl.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+
+        const data = getFormData();
+        const dict = I18N[currentLang] || I18N.ar;
+
+        if(!validate(data)){
+          setStatus(dict.msg.statusNeed);
+          return;
+        }
+
+        if(!LEADS_ENDPOINT){
+          setStatus(dict.msg.statusConfig);
+          return;
+        }
+
+        setBusy(true);
+        setStatus(dict.msg.statusSending);
+
+        const result = await sendLead(getLeadPayload());
+        if(result.ok){
+          setStatus(dict.msg.statusSent);
+
+          // clear fields
+          ["fName","fContact","fService","fBudget","fTimeline","fDetails","fWebsite"].forEach(id=>{
+            const el = document.getElementById(id);
+            if(el) el.value = "";
+          });
+        } else {
+          setStatus(dict.msg.statusFail);
+        }
+
+        setBusy(false);
+      });
+    }
+
+
+
+        // ===== FAQ accordion (robust) =====
+    // يعمل حتى لو تم تحديث النصوص بسبب الترجمة
+    (function(){
+      const faqRoot = document.getElementById("faq");
+      if(!faqRoot) return;
+
+      faqRoot.addEventListener("click", (e)=>{
+        const btn = e.target && e.target.closest ? e.target.closest(".faq-q") : null;
+        if(!btn) return;
+
+        const item = btn.closest(".faq-item");
+        if(!item) return;
+
+        const items = Array.from(faqRoot.querySelectorAll(".faq-item"));
+        const isOpen = item.classList.contains("is-open");
+
+        // أغلق الجميع
+        items.forEach((other)=>{
+          other.classList.remove("is-open");
+          const b = other.querySelector(".faq-q");
+          if(b) b.setAttribute("aria-expanded", "false");
+        });
+
+        // افتح/اغلق الحالي
+        if(!isOpen){
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        } else {
+          item.classList.remove("is-open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      }, true);
+    })();
+    // Pause animations when the tab is hidden (saves CPU/GPU)
+    document.addEventListener("visibilitychange", ()=>{
+      document.body.classList.toggle("is-paused", document.hidden);
+    });
+
+
+// init
+</script>
+<a id="floatingContactBtn" href="https://api.whatsapp.com/send/?phone=962781662869&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-50 md:hidden inline-flex items-center gap-2 rounded-full px-4 py-3 bg-[var(--surface)]/95 border border-[rgba(96,165,250,.28)] text-white shadow-[0_14px_38px_rgba(0,0,0,.34)] backdrop-blur transition hover:-translate-y-0.5 hover:bg-[var(--surface)]">
+  <svg viewBox="0 0 24 24" class="h-5 w-5 text-[var(--p1)]" fill="currentColor" aria-hidden="true">
+    <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.67a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.41Zm-8.46 18.28h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.52-5.22c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.13 1.03 6.99 2.89a9.83 9.83 0 0 1 2.9 6.98c0 5.45-4.43 9.86-9.85 9.86Zm5.74-7.86c-.31-.15-1.85-.91-2.14-1.01-.29-.11-.5-.15-.72.15-.21.31-.82 1.01-1 1.22-.19.21-.37.23-.68.08-.31-.15-1.31-.48-2.49-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.47.13-.62.14-.14.31-.37.46-.55.15-.18.21-.31.31-.51.1-.21.05-.38-.03-.53-.08-.15-.72-1.74-.99-2.38-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.53.08-.81.38-.28.31-1.07 1.05-1.07 2.57s1.1 2.99 1.25 3.2c.15.21 2.17 3.3 5.25 4.63.73.31 1.3.49 1.74.62.73.23 1.39.2 1.92.12.58-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.14-.29-.22-.6-.38Z"/>
+  </svg>
+  <span data-i18n="floating.contact">تواصل سريع</span>
+</a>
+</body>
+</html>
