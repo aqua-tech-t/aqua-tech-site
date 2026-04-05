@@ -11,6 +11,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="color-scheme" content="dark light"/>
+<script>
+  (function(){
+    try{
+      var savedLang = localStorage.getItem("aqua_lang");
+      var lang = (savedLang === "ar" || savedLang === "en") ? savedLang : "ar";
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    }catch(e){}
+  })();
+</script>
 <title id="pageTitle">Aqua.Tech</title>
 <meta content="Aqua.Tech شركة برمجيات تقدّم تطوير تطبيقات ومواقع وحلول مخصصة مع تصميم وموشن جرافيك وإدارة سوشال ميديا." id="metaDesc" name="description"/>
 <link rel="canonical" href="https://aqua.tech/"/>
@@ -698,6 +708,45 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
   }
 }
 
+
+
+/* Adaptive lite mode for mobile performance */
+.lite-mode .tech-circuit{
+  display:none !important;
+}
+.lite-mode .bubbles{
+  opacity:.10 !important;
+}
+.lite-mode .tech-code{
+  opacity:.20 !important;
+}
+.lite-mode .tech-code span:nth-child(n+6){
+  display:none !important;
+}
+.lite-mode .bubbles span:nth-child(n+6){
+  display:none !important;
+}
+
+@media (max-width: 767px){
+  .tech-code span:nth-child(n+6){
+    display:none;
+  }
+
+  .bubbles span:nth-child(n+6){
+    display:none;
+  }
+
+  .bg-blobA,
+  .bg-blobB,
+  .bg-blobC{
+    filter: blur(22px) !important;
+  }
+
+  .bg-blobA{ animation-duration: 20s !important; }
+  .bg-blobB{ animation-duration: 24s !important; }
+  .bg-blobC{ animation-duration: 26s !important; }
+}
+
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{
     animation-duration:.01ms !important;
@@ -769,7 +818,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
   <a class="nav-link" href="#about" data-i18n="nav.about">من نحن</a>
   <a class="nav-link" href="#services" data-i18n="nav.services">الخدمات</a>
   <a class="nav-link" href="#process" data-i18n="nav.process">طريقة العمل</a>
-  <a class="nav-link" href="#why-us" data-i18n="nav.why">ليش نحن</a>
+  <a class="nav-link" href="#why-us" data-i18n="nav.why">لماذا نحن</a>
   <a class="nav-link" href="#faq" data-i18n="nav.faq">الأسئلة</a>
   <a class="nav-link" href="#contact" data-i18n="nav.contact">تواصل معنا</a>
 </nav>
@@ -809,7 +858,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
     <a class="py-2 hover:text-white transition" href="#about" data-i18n="nav.about">من نحن</a>
     <a class="py-2 hover:text-white transition" href="#services" data-i18n="nav.services">الخدمات</a>
     <a class="py-2 hover:text-white transition" href="#process" data-i18n="nav.process">طريقة العمل</a>
-    <a class="py-2 hover:text-white transition" href="#why-us" data-i18n="nav.why">ليش نحن</a>
+    <a class="py-2 hover:text-white transition" href="#why-us" data-i18n="nav.why">لماذا نحن</a>
     <a class="py-2 hover:text-white transition" href="#faq" data-i18n="nav.faq">الأسئلة</a>
     <a class="py-2 hover:text-white transition" href="#contact" data-i18n="nav.contact">تواصل معنا</a>
 
@@ -861,7 +910,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
 </p>
 <h1 class="mt-5 text-[clamp(1.8rem,4.5vw,3.4rem)] font-semibold leading-[1.35] md:leading-[1.22] tracking-normal">
       <span class="block" data-i18n="hero.h1a">نطور مواقع وتطبيقات</span>
-  <span class="block text-transparent bg-clip-text bg-gradient-to-l from-[var(--p2)] to-[var(--p1)]" data-i18n="hero.h1b">تساعد شركتك تكبر وتبيع أكثر</span>
+  <span class="block text-transparent bg-clip-text bg-gradient-to-l from-[var(--p2)] to-[var(--p1)]" data-i18n="hero.h1b">تسهم في نمو أعمالك وزيادة مبيعاتك</span>
 </h1>
 <p class="mt-5 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base md:text-lg text-[var(--muted)] leading-7 sm:leading-8 break-words whitespace-normal" data-i18n="hero.desc">
                    Aqua.Tech نساعد الشركات ورواد الأعمال في بناء مواقع إلكترونية وتطبيقات وحلول رقمية احترافية، من الفكرة إلى الإطلاق، بطريقة واضحة وسريعة ومناسبة للنمو.
@@ -1338,7 +1387,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
 <section class="border-t border-[var(--border)]/70" id="why-us">
   <div class="max-w-6xl mx-auto px-4 py-14 md:py-16 lg:py-20">
     <div>
-      <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="why.h">ليش تختار Aqua.Tech</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold" data-i18n="why.h">لماذا تختار Aqua.Tech</h2>
       <p class="mt-2 text-[var(--muted)] max-w-3xl" data-i18n="why.sub">لأننا نركز على النتيجة، مش فقط الشكل — تنفيذ منظم، تواصل واضح، وحلول مناسبة لاحتياجك.</p>
     </div>
     <div class="why-grid">
@@ -1806,6 +1855,28 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
     const GITHUB_URL = "https://github.com/aqua-tech-t";
 
 
+
+    // Adaptive performance mode for mobile
+    if (window.innerWidth < 768) {
+      document.body.classList.add("lite-mode");
+    }
+
+    // Pause heavy animations when hero is out of view
+    const heroTop = document.querySelector("#top");
+    if (heroTop && "IntersectionObserver" in window) {
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.body.classList.remove("is-paused");
+          } else {
+            document.body.classList.add("is-paused");
+          }
+        });
+      }, { threshold: 0.05 });
+
+      animationObserver.observe(heroTop);
+    }
+
     // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
@@ -1909,7 +1980,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
         "nav.process":"طريقة العمل",
         "nav.faq":"الأسئلة",
         "nav.contact":"تواصل",
-        "nav.why":"ليش نحن",
+        "nav.why":"لماذا نحن",
         "nav.about":"من نحن",
 
         
@@ -1922,7 +1993,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
 
         "hero.badge":"حلول رقمية سلسة — من الفكرة للإطلاق",
         "hero.h1a":"نطور مواقع وتطبيقات",
-        "hero.h1b":"تساعد شركتك تكبر وتبيع أكثر",
+        "hero.h1b":"تسهم في نمو أعمالك وزيادة مبيعاتك",
         "hero.desc":"Aqua.Tech نساعد الشركات ورواد الأعمال في بناء مواقع إلكترونية وتطبيقات وحلول رقمية احترافية، من الفكرة إلى الإطلاق، بطريقة واضحة وسريعة ومناسبة للنمو.",
         "hero.ctaPrimary":"احجز استشارة مجانية",
         "hero.ctaSecondary":"شوف خدماتنا",
@@ -2016,7 +2087,7 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
         "projects.tipD":"بإمكاننا لاحقًا إضافة صور، فلترة، وصفحات لكل مشروع.",
         "projects.tipCta":"ابدأ مشروعك الأول →",
 
-        "why.h":"ليش تختار Aqua.Tech",
+        "why.h":"لماذا تختار Aqua.Tech",
         "why.sub":"لأننا نركز على النتيجة، مش فقط الشكل — تنفيذ منظم، تواصل واضح، وحلول مناسبة لاحتياجك.",
         "why.c1t":"تنفيذ واضح",
         "why.c1d":"خطة عمل واضحة من البداية حتى التسليم.",
@@ -2552,6 +2623,12 @@ section{ content-visibility:auto; contain-intrinsic-size: 1px 900px; }
   applyI18n(currentLang);
 })();
 
+// Re-apply language after the whole DOM is ready so late elements
+// مثل زر الواتساب العائم ياخذوا نفس اللغة بعد التحديث.
+window.addEventListener("DOMContentLoaded", ()=>{
+  applyI18n(currentLang);
+});
+
 
 // ===== Form send (Google Sheets only) =====
     const formEl = document.getElementById("contactForm");
@@ -2784,4 +2861,3 @@ ${data.details || "-"}
 </a>
 </body>
 </html>
-<!-- update -->
