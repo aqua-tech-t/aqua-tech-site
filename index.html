@@ -4567,6 +4567,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (closeIcon) closeIcon.classList.add('hidden');
   }
 
+  var isMobileViewport = function () {
+    return window.innerWidth < 768;
+  };
+
   function scrollToHash(hash, updateUrl) {
     if (!hash || hash === '#') return;
     const target = document.querySelector(hash);
@@ -4620,15 +4624,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener('hashchange', function () {
     if (!window.location.hash) return;
+    if (isMobileViewport()) return;
     scrollToHash(window.location.hash, false);
   });
 
   window.addEventListener('resize', function () {
+    if (isMobileViewport()) return;
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
     if (!target) return;
     clearTimeout(window.__aquaNavResizeTimer);
     window.__aquaNavResizeTimer = setTimeout(function () {
+      if (isMobileViewport()) return;
       scrollToHash(window.location.hash, false);
     }, 120);
   });
